@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f4ef">
+<meta name="description" content="دعوة فرح أنس ويارا يوم الاثنين 2 نوفمبر 2026 في قاعة White Rose، غزة.">
+<title>فرح أنس ويارا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Aref+Ruqaa:wght@400;700&family=Dancing+Script:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+:root{
+  --text-main:#3D4A3E;
+  --text-dark:#8C5369;
+  --card-bg:rgba(254,253,250,.88);
+  --gold-accent:#C5A85A;
+  --gold-color:#D4AF37;
+  --primary-color:#74517B;
+  --border-color:rgba(140,131,119,.2);
+}
+*{margin:0;padding:0;outline:none!important;box-sizing:border-box}
+body{font-family:'Tajawal',sans-serif;color:var(--text-main);overflow-x:hidden!important;background-color:#f6f4ef}
+body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
+  background-image:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(243,236,226,.75) 50%,rgba(236,228,216,.85) 100%),url('photo/bg.jfif');
+  background-size:cover;background-position:center;background-repeat:no-repeat;z-index:-1}
+.main-wrapper{overflow-x:hidden;width:100%;position:relative}
+.app-container{max-width:480px;margin:0 auto;padding:40px 20px 130px;display:flex;flex-direction:column;gap:50px;align-items:center}
+.max-w-\[393px\]{max-width:393px}
+.section-title{font-size:1.1rem;color:var(--text-main);text-align:center;margin-bottom:20px;font-weight:500}
+
+/* ===== شاشة البداية / الستارة ===== */
+.curtain-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.curtain-right,.curtain-left{position:absolute;top:0;width:50%;height:100%;
+  background:rgba(255,250,235,.08);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,235,150,.15);transition:transform 1.2s cubic-bezier(.7,0,.3,1);z-index:50;will-change:transform}
+.curtain-left{left:0;transform-origin:left center;border-right:1px solid rgba(255,235,150,.35);
+  box-shadow:5px 0 25px rgba(218,165,32,.08),inset -5px 0 15px rgba(255,235,150,.05)}
+.curtain-right{right:0;transform-origin:right center;border-left:1px solid rgba(255,235,150,.35);
+  box-shadow:-5px 0 25px rgba(218,165,32,.08),inset 5px 0 15px rgba(255,235,150,.05)}
+.entry-button-wrapper{position:relative;z-index:10000;cursor:pointer;transition:all .5s ease}
+.entry-circle{width:180px;height:180px;background:#fcfaf6;border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.08),inset 0 0 15px rgba(140,136,119,.05);border:1px solid rgba(140,136,119,.2);position:relative}
+.circle-foliage{position:absolute;width:100%;height:100%;border-radius:50%;border:2px dashed rgba(197,168,90,.45);width:calc(100% - 14px);height:calc(100% - 14px);opacity:.7}
+.entry-names{font-family:'Aref Ruqaa',serif;font-size:1.5rem;color:#6b695e;line-height:1.5;margin-bottom:5px}
+.entry-open{font-size:.8rem;letter-spacing:3px;color:#a9a494;border-top:1px solid #e6e4dc;padding-top:5px}
+.curtain-opened .curtain-left{transform:translateX(-100%)}
+.curtain-opened .curtain-right{transform:translateX(100%) rotateY(180deg)}
+.curtain-opened .entry-button-wrapper{opacity:0;visibility:hidden;transform:scale(1.5)}
+
+/* ===== الرئيسية ===== */
+.hero{height:80vh;margin:0 auto;text-align:center;padding:40px 20px 120px;display:flex;justify-content:center;flex-direction:column;align-items:center;position:relative;width:100%}
+.hero-names{text-align:center;direction:ltr;font-size:3.4rem;color:var(--text-dark);line-height:1;font-weight:700;font-family:'Dancing Script',cursive!important}
+.hero-subtitle{font-size:1.6rem;font-weight:500;margin-top:70px;margin-bottom:50px;color:var(--text-main)}
+.name-wrapper{display:flex;flex-direction:column;align-items:flex-start;width:fit-content;margin:0 auto}
+.title-prefix{font-size:.45em;color:#322b3b;font-family:"Dancing Script",cursive!important;font-style:italic;font-weight:normal;margin-bottom:-5px;margin-left:2px}
+.ampersand-wrapper{display:block;margin:10px 0}
+.ampersand{font-size:2.4rem;color:var(--text-main)}
+.hero-date{margin-top:50px;font-size:1.25rem;line-height:2}
+.hero-date b{color:var(--text-dark)}
+.scroll-indicator{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;color:#a9a494;opacity:.9;animation:bounce 2s infinite ease-in-out}
+.scroll-indicator .icon{font-size:1.5rem;color:var(--text-dark)}
+@keyframes bounce{0%,20%,50%,80%,100%{transform:translate(-50%,0)}40%{transform:translate(-50%,-8px)}60%{transform:translate(-50%,-4px)}}
+
+/* ===== بطاقة الترحيب ===== */
+.card,.welcome-card{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:20px;padding:40px 20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.03);width:100%;border:1px solid rgba(255,255,255,.5)}
+.bismillah{font-family:'Amiri',serif;font-size:1.9rem;font-weight:400;margin-bottom:10px;color:var(--text-dark)}
+.welcome-text{line-height:2.2;font-size:1.1rem;margin-bottom:25px}
+.welcome-text b{color:var(--text-dark)}
+.welcome-names{font-weight:bold;font-size:1.2rem;color:var(--text-dark)}
+
+/* ===== الموقع والتقويم ===== */
+.location-section{text-align:center;width:100%;display:flex;flex-direction:column;align-items:center}
+.location-name{font-size:1.25rem;font-weight:bold;color:var(--text-dark)}
+.location-address{font-size:.95rem;margin-bottom:30px;line-height:2;color:#777}
+.calendar-card{background:#fff;width:80%;border-radius:20px;position:relative;box-shadow:0 10px 25px rgba(0,0,0,.05);margin-bottom:25px}
+.calendar-rings{position:absolute;top:-10px;width:100%;display:flex;justify-content:space-around;padding:0 40px}
+.ring{width:25px;height:35px;border:3px solid rgba(255,255,255,.7);border-radius:12px;background:transparent;box-shadow:inset 0 2px 5px rgba(0,0,0,.12)}
+.calendar-header{background:var(--text-dark);color:#fff;border-radius:20px 20px 0 0;padding:25px 20px 15px;display:flex;justify-content:space-between;font-size:.9rem}
+.calendar-header .month{font-size:1.2rem;font-weight:bold}
+.calendar-body{padding:20px;border-radius:0 0 20px 20px}
+.big-day{font-size:5rem;color:#a9a494;line-height:1;margin-bottom:10px}
+.day-name{font-weight:bold;font-size:1.1rem;border-bottom:1px solid var(--border-color);padding-bottom:10px;width:50%;margin:0 auto 10px}
+.time{font-size:1.1rem;color:var(--text-dark);font-weight:500}
+.save-date-btn{background:transparent;border:1px solid var(--border-color);padding:10px 30px;border-radius:25px;color:var(--text-main);font-size:1rem;display:flex;align-items:center;gap:10px;cursor:pointer;font-family:inherit;transition:.25s}
+.save-date-btn:hover{border-color:var(--gold-accent);transform:translateY(-2px);background:#fff}
+
+/* ===== العد التنازلي ===== */
+.countdown-section{width:100%;background-size:cover;background-position:center;border-radius:20px;padding:30px;background:rgba(255,255,255,.35);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.4)}
+.countdown-boxes{display:flex;justify-content:center;gap:12px;padding:10px}
+.countdown-boxes .box{background-color:#fcfaf6;border-radius:20px;padding:20px 10px;text-align:center;flex:1;max-width:90px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  box-shadow:6px 6px 12px #e3e1da,-6px -6px 12px #ffffff;transition:transform .2s ease-in-out}
+.countdown-boxes .box:hover{transform:translateY(-3px)}
+.countdown-boxes .num{display:block;font-size:1.8rem;font-weight:bold;color:var(--text-dark);line-height:1.1;margin-bottom:5px}
+.countdown-boxes .label{display:block;font-size:.8rem;color:#8c8877}
+
+/* ===== البرنامج timeline ===== */
+.timeline-section{width:100%;background:rgba(255,255,255,.05);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.15);border-radius:25px;padding:40px 25px;box-shadow:0 15px 35px rgba(0,0,0,.05);margin-top:20px}
+.timeline-section .section-title{color:var(--primary-color,#74517B);margin-bottom:45px;font-size:1.2rem;font-weight:700;letter-spacing:1px}
+.timeline{position:relative;padding:0;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:50%;top:5px;bottom:-15px;width:2px;background:linear-gradient(to bottom,transparent,var(--gold-color,#D4AF37),transparent);opacity:.4;transform:translateX(-50%)}
+.scroll-tracker-dot{position:absolute;left:50%;top:0;transform:translateX(-50%);width:16px;height:16px;background-color:var(--gold-color,#D4AF37);border-radius:50%;z-index:3;
+  box-shadow:0 0 15px 5px rgba(212,175,55,.5);transition:top .4s cubic-bezier(.25,1,.5,1);display:none}
+.timeline-item{display:flex;align-items:center;margin-bottom:45px;position:relative;width:100%;transition:all .4s cubic-bezier(.175,.885,.32,1.275)}
+.timeline-item:last-child{margin-bottom:10px}
+.timeline-item .dot{position:absolute;left:50%;transform:translateX(-50%);width:14px;height:14px;background-color:var(--primary-color,#74517B);border-radius:50%;z-index:2;border:3px solid #fff;
+  box-shadow:0 0 15px rgba(116,81,123,.3);transition:all .3s ease}
+.timeline-item.active .dot{width:18px;height:18px;background-color:var(--gold-color,#D4AF37);border:4px solid #fff;box-shadow:0 0 20px 5px rgba(212,175,55,.4);animation:pulse-gold 2s infinite}
+@keyframes pulse-gold{0%{box-shadow:0 0 0 0 rgba(212,175,55,.7)}70%{box-shadow:0 0 0 10px rgba(212,175,55,0)}100%{box-shadow:0 0 0 0 rgba(212,175,55,0)}}
+.timeline-item .content{display:flex;width:100%;justify-content:space-between;align-items:center;padding:0}
+.timeline-item .content .event-name{flex:1;text-align:left;padding-left:30px;font-size:1.05rem;font-weight:600;color:var(--primary-color,#74517B);transition:color .3s ease}
+.timeline-item .content .time-container{flex:1;text-align:right;padding-right:30px;display:flex;flex-direction:column}
+.timeline-item .content .event-time{font-size:.95rem;font-weight:400;color:#666}
+.timeline-item:hover{transform:scale(1.02)}
+.timeline-item:hover .event-name{color:var(--gold-color,#D4AF37)}
+
+/* ===== تفاصيل الحفل ===== */
+.details-section{width:100%;padding:10px}
+.details-list{display:flex;flex-direction:column;gap:15px}
+.detail-item{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);
+  padding:18px 25px;border-radius:20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 32px 0 rgba(0,0,0,.05);transition:all .3s ease}
+.detail-item:hover{background:rgba(255,255,255,.18);transform:translateY(-2px);border-color:var(--primary-color)}
+.detail-item .bullet{width:10px;height:10px;background:var(--gold-color,#D4AF37);border-radius:50%;box-shadow:0 0 10px rgba(212,175,55,.5);flex-shrink:0}
+.detail-item .text{flex:1;text-align:right;margin:0 12px}
+.detail-item .info-icon{color:#a9a494}
+
+/* ===== الخاتمة ===== */
+.closing-message{text-align:center;line-height:2;font-size:1.1rem}
+.closing-message .highlight{margin-top:15px;color:var(--text-dark)}
+
+/* ===== لحظات الحفل ===== */
+.moments-section{width:100%;text-align:center}
+.video-placeholder{position:relative;height:420px;border-radius:20px;overflow:hidden;margin-bottom:30px;
+  background:#8C5369}
+.moment-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.poem-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(116,81,123,.65));display:flex;align-items:center;justify-content:center;padding:30px}
+.poem-overlay p{color:#fff;font-family:"Amiri",serif;font-size:1.45rem;line-height:2;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.attendance-stats{margin-bottom:30px}
+.stat-title{font-size:1rem;color:#8c8877}
+.stat-number{font-size:3rem;color:var(--text-dark);line-height:1;border-bottom:1px solid var(--border-color);display:inline-block;padding-bottom:10px}
+.congratulations{margin-top:10px}
+.cong-title{font-size:1rem;color:var(--text-main);margin-bottom:5px}
+.message-bubble{background:var(--card-bg);padding:18px;border-radius:20px;color:var(--text-dark);margin-top:15px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
+
+/* ===== قصتنا ===== */
+.story-section{width:100%;background:rgba(255,255,255,.05);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:25px;overflow:hidden;
+  box-shadow:0 15px 35px rgba(116,81,123,.08);border:1px solid rgba(255,255,255,.15);transition:all .5s cubic-bezier(.4,0,.2,1)}
+.story-header{cursor:pointer;position:relative;width:100%;height:340px;overflow:hidden}
+.story-image-container{position:relative;width:100%;height:100%}
+.story-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.65) contrast(1.1);transition:transform .8s cubic-bezier(.2,0,.2,1)}
+.story-header:hover .story-photo{transform:scale(1.08)}
+.story-overlay-title{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fcfaf6;gap:15px;background:linear-gradient(to bottom,transparent,rgba(116,81,123,.45))}
+.story-overlay-title h2{font-family:'Aref Ruqaa',serif;font-size:2.6rem;font-weight:500;margin:0;animation:story-glow-pulse 2.5s infinite ease-in-out;text-shadow:0 0 15px rgba(255,255,255,.3)}
+@keyframes story-glow-pulse{0%{text-shadow:0 0 10px rgba(255,255,255,.4),0 0 20px rgba(212,175,55,.2);transform:scale(1)}
+50%{text-shadow:0 0 25px rgba(255,255,255,.8),0 0 40px rgba(212,175,55,.5);transform:scale(1.03)}
+100%{text-shadow:0 0 10px rgba(255,255,255,.4),0 0 20px rgba(212,175,55,.2);transform:scale(1)}}
+#story-arrow{font-size:1.8rem;color:var(--gold-color,#D4AF37);transition:all .5s cubic-bezier(.68,-.55,.265,1.55);filter:drop-shadow(0 0 5px rgba(212,175,55,.5))}
+.story-content{max-height:0;overflow:hidden;transition:all .8s cubic-bezier(.4,0,.2,1);background:rgba(255,255,255,.03)}
+.story-section.open .story-content{max-height:1200px;padding:35px 25px}
+.story-section.open #story-arrow{transform:rotate(180deg) translateY(5px);color:#fff}
+.story-content p{line-height:2.1;font-family:'Amiri',serif;font-size:1.15rem;color:#555}
+
+/* ===== الفوتر ===== */
+.footer{text-align:center;font-size:.9rem;border-top:1px solid var(--border-color);padding-top:30px;width:100%}
+.footer-names{font-weight:bold;font-size:1.2rem;color:var(--text-dark)}
+.footer-date{direction:ltr;color:#888;margin-top:4px}
+.footer-heart{margin:10px 0}
+.credit{font-size:12px;color:#a3978a;margin-top:14px;direction:ltr}
+.credit strong{color:var(--text-dark)}
+
+/* ===== الشريط السفلي ===== */
+.bottom-nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:92%;max-width:420px;background:rgba(246,244,238,.85);
+  backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.6);border-radius:40px;
+  display:flex;justify-content:space-around;align-items:center;padding:10px 5px 8px;z-index:1000;box-shadow:0 10px 25px rgba(0,0,0,.06)}
+.nav-item{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#8c8877;font-size:.65rem;font-weight:500;gap:6px;flex:1;background:none;border:0;cursor:pointer;font-family:inherit}
+.nav-item:not(.center-action) .icon{width:42px;height:42px;background-color:#ebe7dd;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.15rem;transition:all .3s ease;color:var(--text-dark)}
+.nav-item:not(.center-action):hover .icon{background-color:#dfdcd1;transform:scale(1.05)}
+.center-action{transform:translateY(-8px)}
+.gold-circle{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#e3c67b,#cba44c);display:flex;justify-content:center;align-items:center;color:#fff;font-size:1.4rem;
+  box-shadow:0 6px 20px rgba(203,164,76,.4),inset 0 2px 5px rgba(255,255,255,.4)}
+.bottom-nav .nav-item .label{font-size:11px;margin-top:2px}
+
+/* ===== النوافذ ===== */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  display:flex;justify-content:center;align-items:center;z-index:2000;opacity:0;visibility:hidden;transition:all .3s ease;padding:20px}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal-content{background:#fcfaf6;padding:30px;border-radius:20px;text-align:center;position:relative;width:80%;max-width:320px;box-shadow:0 15px 30px rgba(0,0,0,.12);transform:translateY(20px);transition:all .3s ease}
+.modal-overlay.active .modal-content{transform:translateY(0)}
+.modal-content h3{color:#6b695e;font-family:'Aref Ruqaa',serif;font-size:1.4rem;margin-bottom:12px}
+.modal-content p{color:#777;line-height:2;font-size:.9rem}
+.close-modal{position:absolute;top:10px;right:15px;font-size:1.8rem;cursor:pointer;color:#8c8877;line-height:1;background:none;border:0}
+.map-link{display:inline-block;background:linear-gradient(135deg,#e3c67b,#cba44c);color:#fff;padding:10px 25px;border-radius:20px;text-decoration:none;font-size:.9rem;font-weight:500;box-shadow:0 4px 15px rgba(203,164,76,.3);margin-top:10px}
+.gift-box{background:#fdfbf7;border:1.5px dashed #daa520;padding:15px;border-radius:10px;margin:15px 0}
+.gift-box p{margin:0}
+.qr-container{display:flex;justify-content:center;align-items:center;padding:10px;background:#fff;border-radius:10px;box-shadow:inset 0 0 10px rgba(0,0,0,.08)}
+.qr-image{max-width:200px;height:auto;display:block}
+.toast{position:fixed;z-index:3000;bottom:95px;left:50%;transform:translate(-50%,10px);opacity:0;pointer-events:none;background:#403a35;color:#fff;border-radius:99px;padding:10px 20px;font-size:13px;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:520px){.hero-names{font-size:2.9rem}.countdown-boxes{gap:8px}.countdown-boxes .box{max-width:78px;padding:15px 5px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="main-wrapper">
+
+  <!-- ستارة الدخول -->
+  <div id="curtain-container" class="curtain-overlay">
+    <div class="curtain-left"></div>
+    <div class="curtain-right"></div>
+    <div class="entry-button-wrapper" id="start-invitation">
+      <div class="entry-circle">
+        <div class="circle-foliage"></div>
+        <p class="entry-names">أنس<br>&amp;<br>يارا</p>
+        <span class="entry-open">OPEN</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container max-w-[393px]">
+
+    <header class="hero">
+      <h1 class="hero-names">
+        <p class="hero-subtitle">Wedding Invitation</p>
+        <span class="name-wrapper"><span class="title-prefix">Mr.</span><span class="name-text">Anas</span></span>
+        <span class="ampersand-wrapper"><span class="ampersand">&amp;</span></span>
+        <span class="name-wrapper"><span class="title-prefix">Mrs.</span><span class="name-text">Yara</span></span>
+      </h1>
+      <p class="hero-date">الاثنيــن، <b>2 نوفمبر 2026</b> في <b>5:00 مساءً</b></p>
+      <div class="scroll-indicator"><i class="ph ph-caret-double-down icon"></i></div>
+    </header>
+
+    <section class="card welcome-card">
+      <div class="bismillah">بسم الله الرحمن الرحيم</div>
+      <p class="welcome-text">
+        بكل الحب والفرح، يسعدنا دعوتكم لمشاركتنا أجمل لحظاتنا، والاحتفال معنا ببداية حكاية جديدة. حضوركم يزيد فرحتنا ويجعل يومنا أجمل.
+        <br>يتشرف بدعوتكم<br>
+        <b>الأستاذ عطية الخزندار والأستاذ أحمد الشرفا</b>
+        <br>لمشاركتهم فرحة حفل زفاف أنس ويارا، في أمسية مميزة تجمع الأهل والأحبة.
+      </p>
+      <p class="welcome-names">أنس &amp; يارا</p>
+    </section>
+
+    <section class="location-section">
+      <h3 class="section-title">الموقع</h3>
+      <p class="location-name">صالة وقاعة White Rose</p>
+      <p class="location-address">غزة · تل الهوا<br>بالقرب من دوار أبو مازن</p>
+      <div class="calendar-card">
+        <div class="calendar-rings"><div class="ring"></div><div class="ring"></div></div>
+        <div class="calendar-header"><span>الاثنين</span><span class="month">نوفمبر</span><span>2026</span></div>
+        <div class="calendar-body">
+          <div class="big-day">2</div>
+          <div class="day-name">الاثنيــن</div>
+          <div class="time">PM 5:00</div>
+        </div>
+      </div>
+      <button class="save-date-btn" id="save-date-btn"><span>احفظ الموعد</span><span>📅</span></button>
+    </section>
+
+    <section class="countdown-section">
+      <h3 class="section-title">العد التنازلي</h3>
+      <div class="countdown-boxes">
+        <div class="box"><span class="num" id="days">--</span><span class="label">أيام</span></div>
+        <div class="box"><span class="num" id="hours">--</span><span class="label">ساعات</span></div>
+        <div class="box"><span class="num" id="minutes">--</span><span class="label">دقائق</span></div>
+        <div class="box"><span class="num" id="seconds">--</span><span class="label">ثواني</span></div>
+      </div>
+    </section>
+
+    <section class="details-section">
+      <h3 class="section-title">تفاصيل الحفل</h3>
+      <div class="details-list">
+        <div class="detail-item"><span class="bullet"></span><span class="text">يرجى الحضور في الوقت المحدد</span><span class="info-icon">ⓘ</span></div>
+        <div class="detail-item"><span class="bullet"></span><span class="text">الدخول عبر رمز الدعوة QR</span><span class="info-icon">ⓘ</span></div>
+        <div class="detail-item"><span class="bullet"></span><span class="text">عدد الحضور المتوقع 300 ضيف</span><span class="info-icon">ⓘ</span></div>
+      </div>
+    </section>
+
+    <section class="closing-message">
+      <p>وجودكم بيننا هو أجمل هدية،<br>وحضوركم يزيد فرحتنا نورًا وسعادة 💫</p>
+      <p class="highlight">ننتظركم بكل حب لنصنع معًا ذكرى لا تُنسى 🤍</p>
+    </section>
+
+    <section class="moments-section">
+      <h3 class="section-title">لحظات من الحفل</h3>
+      <div class="video-placeholder">
+        <img class="moment-img" src="photo/couple.jfif" alt="أنس ويارا">
+        <div class="poem-overlay">
+          <p>في دروبِ الفرحِ وُلدَتْ حكايتُنا<br>وكبِرَتْ معَنا حتى أزهرتْ أمانينا<br>ما كانَ حبًّا يُروى ثمَّ يُنسى<br>بل كانَ فصلًا خالدًا… كتبَهُ القدرُ لنا</p>
+        </div>
+      </div>
+      <div class="attendance-stats">
+        <p class="stat-title">عدد الحضور 👥</p>
+        <p class="stat-number">300</p>
+      </div>
+      <div class="congratulations">
+        <p class="cong-title">رسالة الاصدقاء 💬</p>
+        <div class="message-bubble">"ألف مبروك، ربي يسعدكم ❤️"</div>
+        <div class="message-bubble">"بارك الله لكما 💍"</div>
+        <div class="message-bubble">"زواج مبارك يا غالي 🎉"</div>
+        <div class="message-bubble">"الله يتمملكم على خير ✨"</div>
+      </div>
+    </section>
+
+    <section class="timeline-section">
+      <h3 class="section-title">برنامج المناسبة</h3>
+      <div class="timeline">
+        <div class="scroll-tracker-dot" id="scroll-tracker"></div>
+        <div class="timeline-item active">
+          <div class="dot"></div>
+          <div class="content"><span class="event-name">دخول القاعة</span>
+            <div class="time-container"><span class="event-time">PM 5:00</span><span class="event-time">2/11</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div class="content"><span class="event-name">كلمة الحفل</span>
+            <div class="time-container"><span class="event-time">PM 5:30</span><span class="event-time">2/11</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div class="content"><span class="event-name">زفة العروسين</span>
+            <div class="time-container"><span class="event-time">PM 6:00</span><span class="event-time">2/11</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="story-header" id="story-toggle">
+        <div class="story-image-container">
+          <img class="story-photo" src="photo/couple.jfif" alt="أنس ويارا">
+          <div class="story-overlay-title">
+            <h2>أنس و يارا</h2>
+            <i class="ph ph-caret-down" id="story-arrow"></i>
+          </div>
+        </div>
+      </div>
+      <div class="story-content">
+        <p>بكل الحب والفرح ندعوكم لمشاركتنا أجمل لحظاتنا يوم الاثنين 2 نوفمبر 2026 في قاعة White Rose بغزة. وجودكم يزيد فرحتنا نورًا وسعادة، وننتظركم بكل حب لنصنع معًا ذكرى لا تُنسى 🤍</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="footer-names">أنس &amp; يارا</p>
+      <p class="footer-date">02/11/2026</p>
+      <p class="footer-heart">🤍</p>
+      <p class="credit">Designed with love by <strong>ENG: Abdulaziz Alkhazendar</strong></p>
+      <p class="credit">لطلب نسخة لمناسبتك التواصل عبر الواتساب <a href="https://wa.me/970567581412?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AF%D8%B9%D9%88%D8%A9%20%D9%84%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%AA%D9%8A" target="_blank" rel="noopener" style="color:var(--text-dark);font-weight:700;text-decoration:none;direction:ltr;display:inline-block">970567581412</a></p>
+      <p style="margin-top:8px;color:#a3978a;font-size:12px">نتشرف بوجودكم ومشاركتكم فرحتنا 🤍</p>
+    </footer>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item" id="btn-qr"><span class="icon"><i class="ph ph-qr-code"></i></span><span class="label">رمز الدخول</span></button>
+    <button class="nav-item" id="btn-location"><span class="icon"><i class="ph ph-map-pin"></i></span><span class="label">الموقع</span></button>
+    <button class="nav-item center-action" id="btn-share"><div class="gold-circle"><i class="ph ph-share-network"></i></div></button>
+    <button class="nav-item" id="btn-music"><span class="icon"><i class="ph ph-music-notes" id="music-icon"></i></span><span class="label">موسيقى</span></button>
+    <button class="nav-item" id="btn-gift"><span class="icon"><i class="ph ph-gift"></i></span><span class="label">هدية</span></button>
+  </nav>
+
+  <div id="location-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" id="close-modal">×</button>
+      <h3>صالة وقاعة White Rose</h3>
+      <p>غزة - تل الهوا<br>بالقرب من دوار أبو مازن</p>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=%D8%B5%D8%A7%D9%84%D8%A9%20White%20Rose%20%D8%AA%D9%84%20%D8%A7%D9%84%D9%87%D9%88%D8%A7%20%D8%BA%D8%B2%D8%A9" target="_blank" rel="noopener">فتح في خرائط جوجل</a>
+    </div>
+  </div>
+
+  <div id="gift-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" id="close-gift-modal">×</button>
+      <h3>إرسال هدية للعروسين 🎁</h3>
+      <div class="gift-box">
+        <p style="font-weight:bold;color:#6b695e">رقم المحفظة</p>
+        <p id="wallet-number" style="font-size:1.3rem;color:#daa520;font-family:monospace;font-weight:bold;letter-spacing:2px;direction:ltr">0592726058</p>
+        <button class="map-link" id="copy-wallet" style="border:0;cursor:pointer;font-family:inherit">نسخ الرقم 📋</button>
+      </div>
+      <div class="gift-box">
+        <p style="font-weight:bold;color:#6b695e">وجودكم أجمل هدية</p>
+        <p>حضوركم يزيد فرحتنا نورًا وسعادة 🤍</p>
+      </div>
+      <p style="font-size:.85rem">شكراً لمحبتكم ومشاركتكم</p>
+    </div>
+  </div>
+
+  <div id="qr-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" id="close-qr-modal">×</button>
+      <h3>رمز دخول الحفل</h3>
+      <div class="qr-container"><img id="qr-image" class="qr-image" alt="رمز QR للدعوة"></div>
+      <p style="margin-top:15px">يُرجى إبراز هذا الرمز عند المدخل.</p>
+      <p>أنس &amp; يارا · 02/11/2026</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap">
+        <button class="map-link" id="download-qr" style="border:0;cursor:pointer;font-family:inherit">تحميل الرمز ⬇️</button>
+        <button class="map-link" id="copy-qr-link" style="border:0;cursor:pointer;font-family:inherit;background:#8C5369">نسخ الرابط 🔗</button>
+      </div>
+      <p style="margin-top:12px;font-size:.8rem">ملاحظة: حافظ على الرمز ولا تشاركه مع أحد</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <audio id="bg-music" loop preload="auto">
+    <source src="music/music.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script>
+const eventDate = new Date('2026-11-02T17:00:00+02:00').getTime();
+const $ = (id) => document.getElementById(id);
+const toast = (msg) => { const b = $('toast'); b.textContent = msg; b.classList.add('show'); setTimeout(() => b.classList.remove('show'), 2600); };
+
+function pad(n){ return (n < 10 ? '0' : '') + n; }
+function updateCountdown(){
+  const distance = eventDate - Date.now();
+  if (distance <= 0) {
+    $('days').textContent = '00'; $('hours').textContent = '00';
+    $('minutes').textContent = '00'; $('seconds').textContent = '00';
+    return;
+  }
+  $('days').textContent = pad(Math.floor(distance / 864e5));
+  $('hours').textContent = pad(Math.floor(distance % 864e5 / 36e5));
+  $('minutes').textContent = pad(Math.floor(distance % 36e5 / 6e4));
+  $('seconds').textContent = pad(Math.floor(distance % 6e4 / 1e3));
+}
+updateCountdown(); setInterval(updateCountdown, 1000);
+
+function downloadCalendar(){
+  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Anas and Yara//Invitation//AR','CALSCALE:GREGORIAN','BEGIN:VEVENT',
+    'UID:anas-yara-20261102@invitation','DTSTAMP:20261004T000000Z','DTSTART:20261102T150000Z','DTEND:20261102T180000Z',
+    'SUMMARY:فرح أنس ويارا','LOCATION:صالة وقاعة White Rose، غزة - تل الهوا','DESCRIPTION:بالقرب من دوار أبو مازن - الاثنين 2 نوفمبر 2026 الساعة 5:00 مساء',
+    'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'دعوة-أنس-ويارا.ics'; a.click();
+  URL.revokeObjectURL(url);
+  toast('تم تنزيل الموعد للتقويم 📅');
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  function openModal(m){ if(!m) return; m.classList.add('active'); }
+  function closeModal(m){ if(!m) return; m.classList.remove('active'); }
+
+  const locationModal = $('location-modal'), giftModal = $('gift-modal'), qrModal = $('qr-modal');
+  [locationModal, giftModal, qrModal].forEach(m => m.addEventListener('click', e => { if (e.target === m) closeModal(m); }));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') [locationModal, giftModal, qrModal].forEach(closeModal); });
+
+  $('btn-location').addEventListener('click', () => openModal(locationModal));
+  $('close-modal').addEventListener('click', () => closeModal(locationModal));
+  $('btn-gift').addEventListener('click', () => openModal(giftModal));
+  $('close-gift-modal').addEventListener('click', () => closeModal(giftModal));
+  $('btn-qr').addEventListener('click', () => {
+    $('qr-image').src = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' + encodeURIComponent(location.href);
+    openModal(qrModal);
+  });
+  $('close-qr-modal').addEventListener('click', () => closeModal(qrModal));
+  $('copy-wallet').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText('0592726058'); toast('تم نسخ رقم المحفظة 📋'); }
+    catch(e){ toast('رقم المحفظة: 0592726058'); }
+  });
+  $('download-qr').addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = $('qr-image').src;
+    a.download = 'qr-anas-yara.png';
+    a.target = '_blank';
+    a.click();
+  });
+  $('copy-qr-link').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(location.href); toast('تم نسخ رابط الدعوة 🔗'); }
+    catch(e){ toast('انسخ رابط الصفحة من المتصفح'); }
+  });
+
+  $('save-date-btn').addEventListener('click', downloadCalendar);
+
+  $('btn-share').addEventListener('click', async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: document.title, text: 'دعوة فرح أنس ويارا - الاثنين 2 نوفمبر 2026، الساعة 5:00 مساء', url: location.href });
+      } else { await navigator.clipboard.writeText(location.href); toast('تم نسخ رابط الدعوة'); }
+    } catch(e){ if (e.name !== 'AbortError') toast('انسخ رابط الصفحة لمشاركته'); }
+  });
+
+  const bgMusic = $('bg-music');
+  let isPlaying = false;
+  function toggleMusic(){
+    if (!bgMusic) return;
+    if (isPlaying) {
+      bgMusic.pause();
+      $('music-icon').classList.remove('ph-pause');
+      $('music-icon').classList.add('ph-music-notes');
+      isPlaying = false;
+    } else {
+      bgMusic.play().then(() => {
+        $('music-icon').classList.remove('ph-music-notes');
+        $('music-icon').classList.add('ph-pause');
+        isPlaying = true;
+      }).catch(() => toast('اضغط مرة أخرى لتشغيل الموسيقى 🎵'));
+    }
+  }
+  $('btn-music').addEventListener('click', toggleMusic);
+
+  // الستارة + التمرير التلقائي (نفس حركة الموقع المرجعي)
+  const curtain = $('curtain-container'), startBtn = $('start-invitation');
+  document.body.style.overflow = 'hidden';
+  let scrollSpeed = 1, autoScrollAnimation;
+  function scrollStep(){
+    window.scrollTo(0, window.scrollY + scrollSpeed);
+    if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 5) { stopScroll(); }
+    else { autoScrollAnimation = requestAnimationFrame(scrollStep); }
+  }
+  function stopScroll(){
+    if (autoScrollAnimation) cancelAnimationFrame(autoScrollAnimation);
+    window.removeEventListener('wheel', stopScroll);
+    window.removeEventListener('touchstart', stopScroll);
+    window.removeEventListener('mousedown', stopScroll);
+  }
+  function startAutoScroll(){
+    window.addEventListener('wheel', stopScroll, {passive:true});
+    window.addEventListener('touchstart', stopScroll, {passive:true});
+    window.addEventListener('mousedown', stopScroll, {passive:true});
+    autoScrollAnimation = requestAnimationFrame(scrollStep);
+  }
+  startBtn.addEventListener('click', function(){
+    curtain.classList.add('curtain-opened');
+    if (!isPlaying) toggleMusic();
+    setTimeout(() => {
+      document.body.style.overflow = '';
+      curtain.style.display = 'none';
+      void document.body.offsetHeight;
+      requestAnimationFrame(() => requestAnimationFrame(startAutoScroll));
+    }, 1200);
+  });
+
+  // قسم قصتنا المنسدل
+  const storyToggle = $('story-toggle'), storySection = document.querySelector('.story-section');
+  if (storyToggle && storySection) storyToggle.addEventListener('click', () => storySection.classList.toggle('open'));
+
+  // النقطة الذهبية المتحركة مع التمرير
+  const timeline = document.querySelector('.timeline'), trackerDot = $('scroll-tracker');
+  const items = document.querySelectorAll('.timeline-item');
+  if (timeline && trackerDot && items.length) {
+    trackerDot.style.display = 'block';
+    window.addEventListener('scroll', function(){
+      const viewportMiddle = window.innerHeight / 2;
+      let closest = null, minDist = Infinity;
+      items.forEach(item => {
+        const r = item.getBoundingClientRect();
+        const c = r.top + r.height / 2;
+        const d = Math.abs(viewportMiddle - c);
+        if (d < minDist) { minDist = d; closest = item; }
+      });
+      if (closest) {
+        const dot = closest.querySelector('.dot');
+        trackerDot.style.top = (closest.offsetTop + dot.offsetTop) + 'px';
+        items.forEach(i => i.classList.remove('active'));
+        closest.classList.add('active');
+      }
+    }, {passive:true});
+  }
+});
+</script>
+</body>
+</html>
