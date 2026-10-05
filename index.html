@@ -178,6 +178,38 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .ayah-divider:after{--d:right}
 .ayah-divider span{font-size:17px;opacity:.85}
 
+/* ===== التعليقات ===== */
+.comments-section{width:100%;background:rgba(255,255,255,.07);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.18);border-radius:25px;padding:34px 20px;box-shadow:0 15px 35px rgba(116,81,123,.08)}
+.comments-sub{text-align:center;font-size:.85rem;color:#8c8877;margin:-12px 0 20px}
+.comment-form{display:flex;flex-direction:column;gap:10px;background:rgba(255,255,255,.55);border:1px solid rgba(197,168,90,.4);border-radius:20px;padding:16px}
+.comment-input,.comment-textarea{width:100%;background:#fffdf9;border:1px solid rgba(140,131,119,.22);border-radius:14px;
+  padding:12px 14px;font-family:inherit;font-size:.95rem;color:var(--text-main);transition:border-color .25s,box-shadow .25s;resize:none}
+.comment-input:focus,.comment-textarea:focus{outline:none;border-color:var(--gold-accent);box-shadow:0 0 0 3px rgba(197,168,90,.18)}
+.comment-actions{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.comment-counter{font-size:.72rem;color:#a9a494;direction:ltr}
+.comment-btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:.92rem;
+  background:linear-gradient(135deg,#e3c67b,#cba44c);color:#fff;padding:10px 22px;border-radius:99px;
+  box-shadow:0 6px 18px rgba(203,164,76,.35);transition:transform .2s,box-shadow .2s,opacity .2s}
+.comment-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(203,164,76,.45)}
+.comment-btn:disabled{opacity:.6;cursor:default;transform:none}
+.comments-list{margin-top:18px;max-height:420px;overflow-y:auto;padding-left:4px}
+.comments-list::-webkit-scrollbar{width:5px}
+.comments-list::-webkit-scrollbar-thumb{background:rgba(197,168,90,.5);border-radius:9px}
+.comments-empty{text-align:center;color:#a9a494;font-size:.9rem;padding:18px 0}
+.comment-item{display:flex;gap:12px;align-items:flex-start;background:var(--card-bg);border:1px solid rgba(255,255,255,.6);
+  border-radius:18px;padding:14px 16px;margin-bottom:12px;text-align:right;box-shadow:0 6px 18px rgba(0,0,0,.04);
+  animation:commentIn .45s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes commentIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.comment-avatar{width:40px;height:40px;border-radius:50%;flex-shrink:0;color:#fff;font-weight:700;font-size:1rem;
+  background:linear-gradient(135deg,#8C5369,#C5A85A);display:flex;align-items:center;justify-content:center}
+.comment-content{flex:1;min-width:0}
+.comment-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.comment-name{font-weight:700;color:var(--text-dark);font-size:.95rem}
+.comment-time{font-size:.7rem;color:#a9a494}
+.comment-text{font-size:.92rem;line-height:1.9;color:#555;margin-top:3px;word-wrap:break-word}
+.comment-pending{opacity:.55}
+
 /* ===== الخاتمة ===== */
 .closing-message{text-align:center;line-height:2;font-size:1.1rem}
 .closing-message .highlight{margin-top:15px;color:var(--text-dark)}
@@ -357,12 +389,30 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
           <p>في دروبِ الفرحِ وُلدَتْ حكايتُنا<br>وكبِرَتْ معَنا حتى أزهرتْ أمانينا<br>ما كانَ حبًّا يُروى ثمَّ يُنسى<br>بل كانَ فصلًا خالدًا… كتبَهُ القدرُ لنا</p>
         </div>
       </div>
-      <div class="congratulations">
+<div class="congratulations">
         <p class="cong-title">رسالة الاصدقاء 💬</p>
         <div class="message-bubble">"ألف مبروك، ربي يسعدكم ❤️"</div>
         <div class="message-bubble">"بارك الله لكما 💍"</div>
         <div class="message-bubble">"زواج مبارك يا غالي 🎉"</div>
         <div class="message-bubble">"الله يتمملكم على خير ✨"</div>
+      </div>
+    </section>
+
+    <section class="comments-section" id="comments">
+      <h3 class="section-title">اكتب لنا رسالة 💌</h3>
+      <p class="comments-sub">كل رسالة بتوصل告诉我们 وبتتنحفظ عندنا بحب</p>
+
+      <form class="comment-form" id="comment-form" autocomplete="off">
+        <input class="comment-input" id="comment-name" type="text" placeholder="اسمك الكريم" maxlength="40" required>
+        <textarea class="comment-textarea" id="comment-text" placeholder="اكتب رسالتك هنا..." maxlength="300" rows="3" required></textarea>
+        <div class="comment-actions">
+          <span class="comment-counter" id="comment-counter">0 / 300</span>
+          <button class="comment-btn" type="submit" id="comment-send"><i class="ph ph-paper-plane-tilt"></i><span>إرسال</span></button>
+        </div>
+      </form>
+
+      <div class="comments-list" id="comments-list">
+        <p class="comments-empty" id="comments-empty">كن أول من يكتب رسالة 🤍</p>
       </div>
     </section>
 
@@ -642,6 +692,82 @@ document.addEventListener('DOMContentLoaded', function(){
       requestAnimationFrame(() => requestAnimationFrame(startAutoScroll));
     }, 1200);
   });
+
+  // ===== التعليقات (Google Sheets) =====
+  // لتفعيلها: ضع رابط_web_app_من_Google_Apps_Script_هنا
+  const COMMENTS_API = ''; // مثال: https://script.google.com/macros/s/AKfy.../exec
+
+  function timeAgo(ts){
+    const diff = (Date.now() - ts) / 1000;
+    if (diff < 60) return 'الآن';
+    if (diff < 3600) return 'قبل ' + Math.floor(diff / 60) + ' دقيقة';
+    if (diff < 86400) return 'قبل ' + Math.floor(diff / 3600) + ' ساعة';
+    if (diff < 604800) return 'قبل ' + Math.floor(diff / 86400) + ' يوم';
+    return new Date(ts).toLocaleDateString('ar-EG', {day:'numeric', month:'long'});
+  }
+
+  function renderComment(c, pending){
+    const el = document.createElement('div');
+    el.className = 'comment-item' + (pending ? ' comment-pending' : '');
+    const initial = (c.name || 'زائر').trim().charAt(0);
+    el.innerHTML =
+      '<div class="comment-avatar"></div>' +
+      '<div class="comment-content">' +
+        '<div class="comment-head"><span class="comment-name"></span><span class="comment-time"></span></div>' +
+        '<p class="comment-text"></p>' +
+      '</div>';
+    el.querySelector('.comment-avatar').textContent = initial;
+    el.querySelector('.comment-name').textContent = c.name || 'زائر';
+    el.querySelector('.comment-time').textContent = pending ? 'جاري الإرسال...' : timeAgo(c.time || Date.now());
+    el.querySelector('.comment-text').textContent = c.message || '';
+    return el;
+  }
+
+  const list = $('comments-list'), empty = $('comments-empty'), form = $('comment-form'),
+        nameIn = $('comment-name'), textIn = $('comment-text'),
+        counter = $('comment-counter'), sendBtn = $('comment-send');
+
+  textIn.addEventListener('input', () => counter.textContent = textIn.value.length + ' / 300');
+
+  async function loadComments(){
+    try {
+      const res = await fetch(COMMENTS_API + '?action=list&t=' + Date.now());
+      const data = await res.json();
+      const rows = Array.isArray(data) ? data : (data.comments || []);
+      if (empty) empty.remove();
+      rows.forEach(c => list.appendChild(renderComment(c)));
+    } catch(e){
+      if (empty) empty.textContent = 'تعذّر تحميل الرسائل الآن';
+    }
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!COMMENTS_API) { toast('التعليقات تُفعَّل قريبًا — تابعونا 💌'); return; }
+    const name = nameIn.value.trim(), message = textIn.value.trim();
+    if (!name || !message) return;
+    const btnLabel = sendBtn.querySelector('span');
+    sendBtn.disabled = true; btnLabel.textContent = 'جاري الإرسال...';
+    // عرض فوري ثم تأكيد الحفظ
+    const temp = renderComment({ name, message, time: Date.now() }, true);
+    if (empty) empty.remove();
+    list.prepend(temp);
+    textIn.value = ''; counter.textContent = '0 / 300';
+    try {
+      await fetch(COMMENTS_API, { method:'POST', mode:'no-cors',
+        body: new URLSearchParams({ action:'add', name, message }) });
+      temp.classList.remove('comment-pending');
+      temp.querySelector('.comment-time').textContent = timeAgo(Date.now());
+      toast('وصلتنا رسالتك 🤍');
+    } catch(e){
+      temp.remove();
+      textIn.value = message;
+      toast('تعذّر الإرسال، حاول مرة أخرى');
+    }
+    sendBtn.disabled = false; btnLabel.textContent = 'إرسال';
+  });
+
+  if (COMMENTS_API) loadComments(); else if (empty) empty.textContent = 'التعليقات تُفعَّل قريبًا — تابعونا 💌';
 
   // قسم قصتنا المنسدل
   const storyToggle = $('story-toggle'), storySection = document.querySelector('.story-section');
