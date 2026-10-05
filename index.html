@@ -169,6 +169,15 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .detail-item .text{flex:1;text-align:right;margin:0 12px}
 .detail-item .info-icon{color:#a9a494}
 
+/* ===== الآية في البطاقة الترحيبية ===== */
+.ayah-hero{margin-bottom:6px}
+.ayah-hero-text{font-family:'Amiri',serif;font-size:1.22rem;line-height:2.4;color:var(--text-dark);text-shadow:0 1px 6px rgba(255,255,255,.7)}
+.ayah-hero-ref{margin-top:12px;font-size:.78rem;color:#9a9287;letter-spacing:1px}
+.ayah-divider{display:flex;align-items:center;gap:14px;margin:24px 0 20px;color:var(--gold-accent)}
+.ayah-divider:before,.ayah-divider:after{content:"";flex:1;height:1px;background:linear-gradient(to var(--d,left),transparent,rgba(197,168,90,.7))}
+.ayah-divider:after{--d:right}
+.ayah-divider span{font-size:17px;opacity:.85}
+
 /* ===== الآية الكريمة ===== */
 .ayah-section{width:100%;position:relative;background:linear-gradient(165deg,rgba(255,252,245,.9),rgba(250,240,232,.78));
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(197,168,90,.5);border-radius:28px;
@@ -284,11 +293,18 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         <span class="ampersand-wrapper"><span class="ampersand">&amp;</span></span>
         <span class="name-wrapper"><span class="title-prefix">Eng.</span><span class="name-text">Yara</span></span>
       </h1>
-      <p class="hero-date">الاثنيــن، <b>2 نوفمبر 2026</b> في <b>5:00 مساءً</b></p>
+      <p class="hero-date">الاثنيــن، <b>2 نوفمبر 2026</b> في <b>4:00 مساءً</b></p>
       <div class="scroll-indicator"><i class="ph ph-caret-double-down icon"></i></div>
     </header>
 
     <section class="card welcome-card">
+      <div class="ayah-hero">
+        <p class="ayah-hero-text">
+          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+        </p>
+        <p class="ayah-hero-ref">سورة الروم · الآية ٢١</p>
+      </div>
+      <div class="ayah-divider" aria-hidden="true"><span>❦</span></div>
       <div class="bismillah">بسم الله الرحمن الرحيم</div>
       <p class="welcome-text">
         بكل الحب والفرح، يسعدنا دعوتكم لمشاركتنا أجمل لحظاتنا، والاحتفال معنا ببداية حكاية جديدة. حضوركم يزيد فرحتنا ويجعل يومنا أجمل.
@@ -315,7 +331,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         <div class="calendar-body">
           <div class="big-day">2</div>
           <div class="day-name">الاثنيــن · 2 نوفمبر 2026</div>
-          <div class="time">PM 5:00<small>بتوقيت القدس</small></div>
+          <div class="time">PM 4:00<small>بتوقيت غزة</small></div>
         </div>
       </div>
       <button class="save-date-btn" id="save-date-btn"><span>احفظ الموعد</span><span>📅</span></button>
@@ -475,7 +491,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 </div>
 
 <script>
-const eventDate = new Date('2026-11-02T17:00:00+02:00').getTime();
+const eventDate = new Date('2026-11-02T16:00:00+02:00').getTime();
 const $ = (id) => document.getElementById(id);
 const toast = (msg) => { const b = $('toast'); b.textContent = msg; b.classList.add('show'); setTimeout(() => b.classList.remove('show'), 2600); };
 
@@ -496,8 +512,8 @@ updateCountdown(); setInterval(updateCountdown, 1000);
 
 function downloadCalendar(){
   const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Anas and Yara//Invitation//AR','CALSCALE:GREGORIAN','BEGIN:VEVENT',
-    'UID:anas-yara-20261102@invitation','DTSTAMP:20261004T000000Z','DTSTART:20261102T150000Z','DTEND:20261102T180000Z',
-    'SUMMARY:فرح أنس ويارا','LOCATION:صالة وقاعة White Rose، غزة - تل الهوا','DESCRIPTION:بالقرب من دوار أبو مازن - الاثنين 2 نوفمبر 2026 الساعة 5:00 مساء',
+    'UID:anas-yara-20261102@invitation','DTSTAMP:20261004T000000Z','DTSTART:20261102T140000Z','DTEND:20261102T170000Z',
+    'SUMMARY:فرح أنس ويارا','LOCATION:صالة وقاعة White Rose، غزة - تل الهوا','DESCRIPTION:بالقرب من دوار أبو مازن - الاثنين 2 نوفمبر 2026 الساعة 4:00 مساء بتوقيت غزة',
     'END:VEVENT','END:VCALENDAR'].join('\r\n');
   const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
   const url = URL.createObjectURL(blob);
@@ -545,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function(){
   $('btn-share').addEventListener('click', async () => {
     try {
       if (navigator.share) {
-        await navigator.share({ title: document.title, text: 'دعوة فرح أنس ويارا - الاثنين 2 نوفمبر 2026، الساعة 5:00 مساء', url: location.href });
+        await navigator.share({ title: document.title, text: 'دعوة فرح أنس ويارا - الاثنين 2 نوفمبر 2026، الساعة 4:00 مساءً بتوقيت غزة', url: location.href });
       } else { await navigator.clipboard.writeText(location.href); toast('تم نسخ رابط الدعوة'); }
     } catch(e){ if (e.name !== 'AbortError') toast('انسخ رابط الصفحة لمشاركته'); }
   });
