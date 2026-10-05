@@ -282,8 +282,8 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .bottom-nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:92%;max-width:420px;background:rgba(246,244,238,.85);
   backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.6);border-radius:40px;
   display:flex;justify-content:space-around;align-items:center;padding:10px 5px 8px;z-index:1000;box-shadow:0 10px 25px rgba(0,0,0,.06)}
-.nav-item{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#8c8877;font-size:.65rem;font-weight:500;gap:6px;flex:1;background:none;border:0;cursor:pointer;font-family:inherit}
-.nav-item:not(.center-action) .icon{width:42px;height:42px;background-color:#ebe7dd;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.15rem;transition:all .3s ease;color:var(--text-dark)}
+.nav-item{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#8c8877;font-size:.65rem;font-weight:500;gap:6px;flex:1;background:none;border:0;cursor:pointer;font-family:inherit;min-width:0;padding:0 2px}
+.nav-item:not(.center-action) .icon{width:40px;height:40px;background-color:#ebe7dd;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.1rem;transition:all .3s ease;color:var(--text-dark)}
 .nav-item:not(.center-action):hover .icon{background-color:#dfdcd1;transform:scale(1.05)}
 .center-action{transform:translateY(-8px)}
 .gold-circle{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#e3c67b,#cba44c);display:flex;justify-content:center;align-items:center;color:#fff;font-size:1.4rem;
@@ -537,6 +537,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     <button class="nav-item center-action" id="btn-share"><div class="gold-circle"><i class="ph ph-share-network"></i></div></button>
     <button class="nav-item" id="btn-music"><span class="icon"><i class="ph ph-music-notes" id="music-icon"></i></span><span class="label">موسيقى</span></button>
     <button class="nav-item" id="btn-gift"><span class="icon"><i class="ph ph-gift"></i></span><span class="label">هدية</span></button>
+    <button class="nav-item" id="btn-comments"><span class="icon"><i class="ph ph-chat-circle-text"></i></span><span class="label">رسائل</span></button>
   </nav>
 
   <div id="location-modal" class="modal-overlay">
@@ -630,6 +631,10 @@ document.addEventListener('DOMContentLoaded', function(){
   $('btn-location').addEventListener('click', () => openModal(locationModal));
   $('close-modal').addEventListener('click', () => closeModal(locationModal));
   $('btn-gift').addEventListener('click', () => openModal(giftModal));
+  $('btn-comments').addEventListener('click', () => {
+    const target = $('comments');
+    if (target) target.scrollIntoView({ behavior:'smooth', block:'center' });
+  });
   $('close-gift-modal').addEventListener('click', () => closeModal(giftModal));
   $('btn-qr').addEventListener('click', () => {
     $('qr-image').src = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' + encodeURIComponent(location.href);
