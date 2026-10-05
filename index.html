@@ -97,7 +97,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 
 /* ===== بطاقة الترحيب ===== */
 .card,.welcome-card{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:20px;padding:40px 20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.03);width:100%;border:1px solid rgba(255,255,255,.5)}
-.bismillah{font-family:'Amiri',serif;font-size:1.9rem;font-weight:400;margin-bottom:10px;color:var(--text-dark)}
+.bismillah{font-family:'Amiri',serif;font-size:2rem;font-weight:400;margin-bottom:4px;color:var(--text-dark)}
 .welcome-text{line-height:2.2;font-size:1.1rem;margin-bottom:10px}
 .welcome-text b{color:var(--text-dark)}
 .hosts-box{margin:18px auto 8px;max-width:420px;background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,.25));border:1px solid rgba(197,168,90,.45);border-radius:22px;padding:26px 20px;box-shadow:0 12px 30px rgba(140,83,105,.10),inset 0 0 0 5px rgba(255,255,255,.35);position:relative}
@@ -320,14 +320,14 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     </header>
 
     <section class="card welcome-card">
+      <div class="bismillah">بسم الله الرحمن الرحيم</div>
+      <div class="ayah-divider" aria-hidden="true"><span>❦</span></div>
       <div class="ayah-hero">
         <p class="ayah-hero-text">
           وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
         </p>
         <p class="ayah-hero-ref">سورة الروم · الآية ٢١</p>
       </div>
-      <div class="ayah-divider" aria-hidden="true"><span>❦</span></div>
-      <div class="bismillah">بسم الله الرحمن الرحيم</div>
       <p class="welcome-text">
         بكل الحب والفرح، يسعدنا دعوتكم لمشاركتنا أجمل لحظاتنا، والاحتفال معنا ببداية حكاية جديدة. حضوركم يزيد فرحتنا ويجعل يومنا أجمل.
       </p>
@@ -391,16 +391,14 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
       </div>
 <div class="congratulations">
         <p class="cong-title">رسالة الاصدقاء 💬</p>
-        <div class="message-bubble">"ألف مبروك، ربي يسعدكم ❤️"</div>
-        <div class="message-bubble">"بارك الله لكما 💍"</div>
-        <div class="message-bubble">"زواج مبارك يا غالي 🎉"</div>
-        <div class="message-bubble">"الله يتمملكم على خير ✨"</div>
+        <div class="comments-list" id="comments-list">
+          <p class="comments-empty" id="comments-empty">كن أول من يكتب رسالة 🤍</p>
+        </div>
       </div>
     </section>
 
     <section class="comments-section" id="comments">
-      <h3 class="section-title">اكتب لنا رسالة 💌</h3>
-      <p class="comments-sub">كل رسالة بتوصل告诉我们 وبتتنحفظ عندنا بحب</p>
+      <p class="comments-sub">اكتب لنا رسالة 💌 — كل رسالة بتوصل告诉我们 وبتتنحفظ عندنا بحب</p>
 
       <form class="comment-form" id="comment-form" autocomplete="off">
         <input class="comment-input" id="comment-name" type="text" placeholder="اسمك الكريم" maxlength="40" required>
@@ -410,10 +408,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
           <button class="comment-btn" type="submit" id="comment-send"><i class="ph ph-paper-plane-tilt"></i><span>إرسال</span></button>
         </div>
       </form>
-
-      <div class="comments-list" id="comments-list">
-        <p class="comments-empty" id="comments-empty">كن أول من يكتب رسالة 🤍</p>
-      </div>
     </section>
 
     <section class="timeline-section">
