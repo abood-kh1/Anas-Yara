@@ -23,9 +23,15 @@
 }
 *{margin:0;padding:0;outline:none!important;box-sizing:border-box}
 body{font-family:'Tajawal',sans-serif;color:var(--text-main);overflow-x:hidden!important;background-color:#f6f4ef}
-body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
-  background-image:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(243,236,226,.75) 50%,rgba(236,228,216,.85) 100%),url('photo/bg.jfif');
-  background-size:cover;background-position:center;background-repeat:no-repeat;z-index:-1}
+/* ===== الخلفية المتحركة (Ken Burns) — طبقتين تتحركان باتجاهين مختلفين ===== */
+.bg-photo{position:fixed;inset:-8%;z-index:-2;background-size:cover;background-position:center;background-repeat:no-repeat;
+  animation:bgPan 34s ease-in-out infinite alternate;will-change:transform}
+@keyframes bgPan{0%{transform:scale(1.02) translate3d(0,0,0)}50%{transform:scale(1.16) translate3d(-2.2%,-1.6%,0)}100%{transform:scale(1.02) translate3d(0,0,0)}}
+.bg-photo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(250,247,241,.80) 0%,rgba(243,236,226,.66) 45%,rgba(236,228,216,.84) 100%)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 12%,rgba(255,255,255,.55) 0%,transparent 55%),
+             radial-gradient(ellipse at 50% 92%,rgba(201,162,79,.18) 0%,transparent 60%)}
 .main-wrapper{overflow-x:hidden;width:100%;position:relative}
 /* ===== الخلفية التفاعلية ===== */
 .fx-layer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -240,6 +246,7 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
 </style>
 </head>
 <body>
+<div class="bg-photo" style="background-image:url('photo/bg.jfif')" aria-hidden="true"></div>
 <div class="fx-layer" aria-hidden="true">
   <div class="fx-orb o1"></div><div class="fx-orb o2"></div><div class="fx-orb o3"></div>
 </div>
@@ -567,7 +574,6 @@ document.addEventListener('DOMContentLoaded', function(){
       fx.appendChild(s);
     }
     // حركة خفيفة للطبقة مع المؤشر أو الجوال
-    const bg = document.body;
     let tx = 0, ty = 0, cx = 0, cy = 0;
     window.addEventListener('mousemove', e => {
       tx = (e.clientX / window.innerWidth - .5) * 16;
@@ -578,10 +584,12 @@ document.addEventListener('DOMContentLoaded', function(){
       tx = Math.max(-16, Math.min(16, e.gamma / 4));
       ty = Math.max(-16, Math.min(16, (e.beta - 45) / 4));
     }, {passive:true});
+    const bgImg = document.querySelector('.bg-photo');
     (function parallax(){
       cx += (tx - cx) * .06;
       cy += (ty - cy) * .06;
-      bg.style.backgroundPosition = (50 + cx * .18) + '% ' + (50 + cy * .18) + '%';
+      // طبقة الصورة تتحرك عكس الحركة البطيئة، فتعطي عمقًا (parallax مضاعف)
+      bgImg.style.translate = (-cx * .55 + 'px,' + -cy * .55 + 'px');
       fx.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
       requestAnimationFrame(parallax);
     })();
