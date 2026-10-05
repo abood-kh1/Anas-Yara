@@ -27,6 +27,31 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
   background-image:linear-gradient(180deg,rgba(250,247,241,.82) 0%,rgba(243,236,226,.75) 50%,rgba(236,228,216,.85) 100%),url('photo/bg.jfif');
   background-size:cover;background-position:center;background-repeat:no-repeat;z-index:-1}
 .main-wrapper{overflow-x:hidden;width:100%;position:relative}
+/* ===== الخلفية التفاعلية ===== */
+.fx-layer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.fx-orb{position:absolute;border-radius:50%;filter:blur(45px);opacity:.5;animation:orbFloat 16s ease-in-out infinite}
+.fx-orb.o1{width:230px;height:230px;background:#e8b6c0;top:-60px;right:-50px}
+.fx-orb.o2{width:190px;height:190px;background:#c9d6c0;bottom:8%;left:-60px;animation-delay:-5s}
+.fx-orb.o3{width:150px;height:150px;background:#e8d5a8;top:45%;left:55%;animation-delay:-9s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(18px,-26px) scale(1.08)}66%{transform:translate(-22px,16px) scale(.94)}}
+.fx-petal{position:absolute;top:-8%;font-size:16px;opacity:.55;animation:petalFall linear infinite}
+@keyframes petalFall{0%{transform:translateY(-10vh) rotate(0);opacity:0}10%{opacity:.6}100%{transform:translateY(112vh) rotate(320deg);opacity:0}}
+.sparkle{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--gold-accent);box-shadow:0 0 10px var(--gold-accent);animation:sparkleTwinkle 3.2s ease-in-out infinite}
+@keyframes sparkleTwinkle{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:.95;transform:scale(1.25)}}
+/* ===== زر واتساب ===== */
+.wa-card{width:100%;background:linear-gradient(140deg,#1faa54,#128c4a);border-radius:24px;padding:26px 22px;text-align:center;color:#fff;
+  box-shadow:0 16px 40px rgba(18,140,74,.32);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.25)}
+.wa-card::before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.12);top:-60px;left:-40px}
+.wa-card::after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.09);bottom:-50px;right:-30px}
+.wa-label{position:relative;font-size:1rem;line-height:1.9;margin-bottom:16px;font-weight:500}
+.wa-btn{position:relative;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#128c4a;border-radius:99px;padding:13px 28px;
+  text-decoration:none;font-weight:700;font-size:1rem;box-shadow:0 8px 22px rgba(0,0,0,.18);transition:transform .25s,box-shadow .25s}
+.wa-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 14px 30px rgba(0,0,0,.24)}
+.wa-btn i{font-size:1.35rem}
+.wa-btn .wa-num{direction:ltr;letter-spacing:.5px}
+.wa-pulse{position:relative;display:inline-block}
+.wa-pulse::after{content:"";position:absolute;inset:-6px;border-radius:99px;border:2px solid rgba(255,255,255,.75);animation:waPulse 2s ease-out infinite}
+@keyframes waPulse{0%{transform:scale(.95);opacity:.9}100%{transform:scale(1.18);opacity:0}}
 .app-container{max-width:480px;margin:0 auto;padding:40px 20px 130px;display:flex;flex-direction:column;gap:50px;align-items:center}
 .max-w-\[393px\]{max-width:393px}
 .section-title{font-size:1.1rem;color:var(--text-main);text-align:center;margin-bottom:20px;font-weight:500}
@@ -67,23 +92,35 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
 /* ===== بطاقة الترحيب ===== */
 .card,.welcome-card{background:var(--card-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:20px;padding:40px 20px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.03);width:100%;border:1px solid rgba(255,255,255,.5)}
 .bismillah{font-family:'Amiri',serif;font-size:1.9rem;font-weight:400;margin-bottom:10px;color:var(--text-dark)}
-.welcome-text{line-height:2.2;font-size:1.1rem;margin-bottom:25px}
+.welcome-text{line-height:2.2;font-size:1.1rem;margin-bottom:10px}
 .welcome-text b{color:var(--text-dark)}
+.hosts-box{margin:18px auto 8px;max-width:420px;background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,.25));border:1px solid rgba(197,168,90,.45);border-radius:22px;padding:26px 20px;box-shadow:0 12px 30px rgba(140,83,105,.10),inset 0 0 0 5px rgba(255,255,255,.35);position:relative}
+.hosts-box::before{content:"✦";position:absolute;top:-14px;right:50%;transform:translateX(50%);background:#fcfaf6;border:1px solid rgba(197,168,90,.5);color:var(--gold-accent);width:28px;height:28px;border-radius:50%;font-size:14px;line-height:26px}
+.hosts-title{font-size:.85rem;letter-spacing:3px;color:#a9a494;margin-bottom:14px}
+.hosts-names{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.host{display:flex;flex-direction:column;gap:4px;min-width:140px}
+.host-role{font-size:.8rem;color:#a9a494;letter-spacing:1px}
+.host-name{font-family:'Aref Ruqaa',serif;font-size:1.5rem;color:var(--text-dark);line-height:1.6}
+.hosts-divider{color:var(--gold-accent);font-size:1.3rem}
+.hosts-sub{margin-top:14px;font-size:.92rem;color:#777;line-height:2}
 .welcome-names{font-weight:bold;font-size:1.2rem;color:var(--text-dark)}
 
 /* ===== الموقع والتقويم ===== */
 .location-section{text-align:center;width:100%;display:flex;flex-direction:column;align-items:center}
 .location-name{font-size:1.25rem;font-weight:bold;color:var(--text-dark)}
 .location-address{font-size:.95rem;margin-bottom:30px;line-height:2;color:#777}
-.calendar-card{background:#fff;width:80%;border-radius:20px;position:relative;box-shadow:0 10px 25px rgba(0,0,0,.05);margin-bottom:25px}
-.calendar-rings{position:absolute;top:-10px;width:100%;display:flex;justify-content:space-around;padding:0 40px}
-.ring{width:25px;height:35px;border:3px solid rgba(255,255,255,.7);border-radius:12px;background:transparent;box-shadow:inset 0 2px 5px rgba(0,0,0,.12)}
-.calendar-header{background:var(--text-dark);color:#fff;border-radius:20px 20px 0 0;padding:25px 20px 15px;display:flex;justify-content:space-between;font-size:.9rem}
-.calendar-header .month{font-size:1.2rem;font-weight:bold}
-.calendar-body{padding:20px;border-radius:0 0 20px 20px}
-.big-day{font-size:5rem;color:#a9a494;line-height:1;margin-bottom:10px}
-.day-name{font-weight:bold;font-size:1.1rem;border-bottom:1px solid var(--border-color);padding-bottom:10px;width:50%;margin:0 auto 10px}
-.time{font-size:1.1rem;color:var(--text-dark);font-weight:500}
+.calendar-card{background:#fffdf8;width:min(320px,86%);border-radius:26px;position:relative;margin-bottom:25px;
+  border:1px solid rgba(197,168,90,.55);box-shadow:0 20px 45px rgba(116,81,123,.14),0 0 0 8px rgba(255,255,255,.5);overflow:hidden}
+.calendar-card::after{content:"";position:absolute;inset:10px;border:1px dashed rgba(197,168,90,.5);border-radius:18px;pointer-events:none}
+.calendar-rings{position:absolute;top:-11px;width:100%;display:flex;justify-content:space-around;padding:0 52px;z-index:2}
+.ring{width:24px;height:38px;border:4px solid #e9d9ac;border-bottom-color:#c9a94f;border-radius:12px;background:linear-gradient(180deg,#f7ecc9,#d9b95c);box-shadow:0 3px 6px rgba(0,0,0,.18)}
+.calendar-header{background:linear-gradient(135deg,#8C5369 0%,#a86a7e 55%,#c9a24f 130%);color:#fff;border-radius:0;padding:32px 20px 16px;display:flex;justify-content:space-between;align-items:center;font-size:.92rem;text-shadow:0 1px 3px rgba(0,0,0,.25)}
+.calendar-header .month{font-family:'Aref Ruqaa',serif;font-size:1.6rem;font-weight:400}
+.calendar-body{padding:24px 20px 28px;border-radius:0;position:relative;background:radial-gradient(circle at 50% 0%,#fff8e6 0%,transparent 60%)}
+.big-day{font-family:'Aref Ruqaa',serif;font-size:5.5rem;color:var(--text-dark);line-height:1;margin-bottom:6px;text-shadow:0 2px 0 #fff,0 6px 18px rgba(140,83,105,.25)}
+.day-name{font-weight:bold;font-size:1.1rem;color:var(--text-dark);border-bottom:1px solid rgba(197,168,90,.5);padding-bottom:12px;width:56%;margin:0 auto 12px}
+.time{font-size:1.15rem;color:#8a6d2f;font-weight:700;direction:ltr;letter-spacing:1px}
+.time small{display:block;font-size:.75rem;color:#a9a494;letter-spacing:3px;margin-top:4px}
 .save-date-btn{background:transparent;border:1px solid var(--border-color);padding:10px 30px;border-radius:25px;color:var(--text-main);font-size:1rem;display:flex;align-items:center;gap:10px;cursor:pointer;font-family:inherit;transition:.25s}
 .save-date-btn:hover{border-color:var(--gold-accent);transform:translateY(-2px);background:#fff}
 
@@ -203,6 +240,9 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
 </style>
 </head>
 <body>
+<div class="fx-layer" aria-hidden="true">
+  <div class="fx-orb o1"></div><div class="fx-orb o2"></div><div class="fx-orb o3"></div>
+</div>
 <div class="main-wrapper">
 
   <!-- ستارة الدخول -->
@@ -225,7 +265,7 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
         <p class="hero-subtitle">Wedding Invitation</p>
         <span class="name-wrapper"><span class="title-prefix">Mr.</span><span class="name-text">Anas</span></span>
         <span class="ampersand-wrapper"><span class="ampersand">&amp;</span></span>
-        <span class="name-wrapper"><span class="title-prefix">Mrs.</span><span class="name-text">Yara</span></span>
+        <span class="name-wrapper"><span class="title-prefix">Eng.</span><span class="name-text">Yara</span></span>
       </h1>
       <p class="hero-date">الاثنيــن، <b>2 نوفمبر 2026</b> في <b>5:00 مساءً</b></p>
       <div class="scroll-indicator"><i class="ph ph-caret-double-down icon"></i></div>
@@ -235,10 +275,16 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
       <div class="bismillah">بسم الله الرحمن الرحيم</div>
       <p class="welcome-text">
         بكل الحب والفرح، يسعدنا دعوتكم لمشاركتنا أجمل لحظاتنا، والاحتفال معنا ببداية حكاية جديدة. حضوركم يزيد فرحتنا ويجعل يومنا أجمل.
-        <br>يتشرف بدعوتكم<br>
-        <b>الأستاذ عطية الخزندار والأستاذ أحمد الشرفا</b>
-        <br>لمشاركتهم فرحة حفل زفاف أنس ويارا، في أمسية مميزة تجمع الأهل والأحبة.
       </p>
+      <div class="hosts-box">
+        <p class="hosts-title">يتشرف بدعوتكم</p>
+        <div class="hosts-names">
+          <div class="host"><span class="host-role">الأستاذ</span><span class="host-name">عطية الخزندار</span></div>
+          <div class="hosts-divider">❧</div>
+          <div class="host"><span class="host-role">الأستاذ</span><span class="host-name">أحمد الشرفا</span></div>
+        </div>
+        <p class="hosts-sub">لمشاركتهم فرحة حفل زفاف أنس ويارا، في أمسية مميزة تجمع الأهل والأحبة</p>
+      </div>
       <p class="welcome-names">أنس &amp; يارا</p>
     </section>
 
@@ -251,8 +297,8 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
         <div class="calendar-header"><span>الاثنين</span><span class="month">نوفمبر</span><span>2026</span></div>
         <div class="calendar-body">
           <div class="big-day">2</div>
-          <div class="day-name">الاثنيــن</div>
-          <div class="time">PM 5:00</div>
+          <div class="day-name">الاثنيــن · 2 نوفمبر 2026</div>
+          <div class="time">PM 5:00<small>بتوقيت القدس</small></div>
         </div>
       </div>
       <button class="save-date-btn" id="save-date-btn"><span>احفظ الموعد</span><span>📅</span></button>
@@ -272,8 +318,6 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
       <h3 class="section-title">تفاصيل الحفل</h3>
       <div class="details-list">
         <div class="detail-item"><span class="bullet"></span><span class="text">يرجى الحضور في الوقت المحدد</span><span class="info-icon">ⓘ</span></div>
-        <div class="detail-item"><span class="bullet"></span><span class="text">الدخول عبر رمز الدعوة QR</span><span class="info-icon">ⓘ</span></div>
-        <div class="detail-item"><span class="bullet"></span><span class="text">عدد الحضور المتوقع 300 ضيف</span><span class="info-icon">ⓘ</span></div>
       </div>
     </section>
 
@@ -289,10 +333,6 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
         <div class="poem-overlay">
           <p>في دروبِ الفرحِ وُلدَتْ حكايتُنا<br>وكبِرَتْ معَنا حتى أزهرتْ أمانينا<br>ما كانَ حبًّا يُروى ثمَّ يُنسى<br>بل كانَ فصلًا خالدًا… كتبَهُ القدرُ لنا</p>
         </div>
-      </div>
-      <div class="attendance-stats">
-        <p class="stat-title">عدد الحضور 👥</p>
-        <p class="stat-number">300</p>
       </div>
       <div class="congratulations">
         <p class="cong-title">رسالة الاصدقاء 💬</p>
@@ -310,13 +350,7 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
         <div class="timeline-item active">
           <div class="dot"></div>
           <div class="content"><span class="event-name">دخول القاعة</span>
-            <div class="time-container"><span class="event-time">PM 5:00</span><span class="event-time">2/11</span></div>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <div class="content"><span class="event-name">كلمة الحفل</span>
-            <div class="time-container"><span class="event-time">PM 5:30</span><span class="event-time">2/11</span></div>
+            <div class="time-container"><span class="event-time">PM 4:00</span><span class="event-time">2/11</span></div>
           </div>
         </div>
         <div class="timeline-item">
@@ -347,15 +381,21 @@ body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100vh;
       <p class="footer-names">أنس &amp; يارا</p>
       <p class="footer-date">02/11/2026</p>
       <p class="footer-heart">🤍</p>
+      <div class="wa-card">
+        <p class="wa-label">لطلب نسخة دعوة لمناسبتك<br>تواصل معنا عبر الواتساب</p>
+        <a class="wa-btn" href="https://wa.me/970567581412?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AF%D8%B9%D9%88%D8%A9%20%D9%84%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%AA%D9%8A" target="_blank" rel="noopener">
+          <span class="wa-pulse"><i class="ph ph-whatsapp-logo"></i></span>
+          <span class="wa-num">970567581412</span>
+        </a>
+      </div>
       <p class="credit">Designed with love by <strong>ENG: Abdulaziz Alkhazendar</strong></p>
-      <p class="credit">لطلب نسخة لمناسبتك التواصل عبر الواتساب <a href="https://wa.me/970567581412?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AF%D8%B9%D9%88%D8%A9%20%D9%84%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%AA%D9%8A" target="_blank" rel="noopener" style="color:var(--text-dark);font-weight:700;text-decoration:none;direction:ltr;display:inline-block">970567581412</a></p>
       <p style="margin-top:8px;color:#a3978a;font-size:12px">نتشرف بوجودكم ومشاركتكم فرحتنا 🤍</p>
     </footer>
 
   </div>
 
   <nav class="bottom-nav">
-    <button class="nav-item" id="btn-qr"><span class="icon"><i class="ph ph-qr-code"></i></span><span class="label">رمز الدخول</span></button>
+    <button class="nav-item" id="btn-qr"><span class="icon"><i class="ph ph-qr-code"></i></span><span class="label">رمز الدعوة</span></button>
     <button class="nav-item" id="btn-location"><span class="icon"><i class="ph ph-map-pin"></i></span><span class="label">الموقع</span></button>
     <button class="nav-item center-action" id="btn-share"><div class="gold-circle"><i class="ph ph-share-network"></i></div></button>
     <button class="nav-item" id="btn-music"><span class="icon"><i class="ph ph-music-notes" id="music-icon"></i></span><span class="label">موسيقى</span></button>
@@ -503,6 +543,49 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
   $('btn-music').addEventListener('click', toggleMusic);
+
+  // ===== الخلفية التفاعلية: بتلات متساقطة + وميض + حركة مع المؤشر =====
+  const fx = document.querySelector('.fx-layer');
+  if (fx) {
+    const petals = ['🌸','🤍','✦','❀','🌷'];
+    for (let i = 0; i < 16; i++) {
+      const p = document.createElement('div');
+      p.className = 'fx-petal';
+      p.textContent = petals[i % petals.length];
+      p.style.left = (Math.random() * 100) + '%';
+      p.style.fontSize = (11 + Math.random() * 13) + 'px';
+      p.style.animationDuration = (9 + Math.random() * 12) + 's';
+      p.style.animationDelay = (-Math.random() * 20) + 's';
+      fx.appendChild(p);
+    }
+    for (let i = 0; i < 12; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.style.top = (Math.random() * 100) + '%';
+      s.style.left = (Math.random() * 100) + '%';
+      s.style.animationDelay = (-Math.random() * 4) + 's';
+      fx.appendChild(s);
+    }
+    // حركة خفيفة للطبقة مع المؤشر أو الجوال
+    const bg = document.body;
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    window.addEventListener('mousemove', e => {
+      tx = (e.clientX / window.innerWidth - .5) * 16;
+      ty = (e.clientY / window.innerHeight - .5) * 16;
+    }, {passive:true});
+    window.addEventListener('deviceorientation', e => {
+      if (e.gamma == null) return;
+      tx = Math.max(-16, Math.min(16, e.gamma / 4));
+      ty = Math.max(-16, Math.min(16, (e.beta - 45) / 4));
+    }, {passive:true});
+    (function parallax(){
+      cx += (tx - cx) * .06;
+      cy += (ty - cy) * .06;
+      bg.style.backgroundPosition = (50 + cx * .18) + '% ' + (50 + cy * .18) + '%';
+      fx.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+      requestAnimationFrame(parallax);
+    })();
+  }
 
   // الستارة + التمرير التلقائي (نفس حركة الموقع المرجعي)
   const curtain = $('curtain-container'), startBtn = $('start-invitation');
