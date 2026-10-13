@@ -535,7 +535,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     <button class="nav-item" id="btn-qr"><span class="icon"><i class="ph ph-qr-code"></i></span><span class="label">رمز الدعوة</span></button>
     <button class="nav-item" id="btn-location"><span class="icon"><i class="ph ph-map-pin"></i></span><span class="label">الموقع</span></button>
     <button class="nav-item center-action" id="btn-share"><div class="gold-circle"><i class="ph ph-share-network"></i></div></button>
-    <button class="nav-item" id="btn-music"><span class="icon"><i class="ph ph-music-notes" id="music-icon"></i></span><span class="label">موسيقى</span></button>
     <button class="nav-item" id="btn-gift"><span class="icon"><i class="ph ph-gift"></i></span><span class="label">هدية</span></button>
     <button class="nav-item" id="btn-comments"><span class="icon"><i class="ph ph-chat-circle-text"></i></span><span class="label">رسائل</span></button>
   </nav>
@@ -667,25 +666,6 @@ document.addEventListener('DOMContentLoaded', function(){
     } catch(e){ if (e.name !== 'AbortError') toast('انسخ رابط الصفحة لمشاركته'); }
   });
 
-  const bgMusic = $('bg-music');
-  let isPlaying = false;
-  function toggleMusic(){
-    if (!bgMusic) return;
-    if (isPlaying) {
-      bgMusic.pause();
-      $('music-icon').classList.remove('ph-pause');
-      $('music-icon').classList.add('ph-music-notes');
-      isPlaying = false;
-    } else {
-      bgMusic.play().then(() => {
-        $('music-icon').classList.remove('ph-music-notes');
-        $('music-icon').classList.add('ph-pause');
-        isPlaying = true;
-      }).catch(() => toast('اضغط مرة أخرى لتشغيل الموسيقى 🎵'));
-    }
-  }
-  $('btn-music').addEventListener('click', toggleMusic);
-
   // ===== الخلفية التفاعلية: بتلات متساقطة + وميض + حركة مع المؤشر =====
   const fx = document.querySelector('.fx-layer');
   if (fx) {
@@ -753,7 +733,9 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   startBtn.addEventListener('click', function(){
     curtain.classList.add('curtain-opened');
-    if (!isPlaying) toggleMusic();
+    // تشغيل الموسيقى تلقائياً عند الدخول (بدون زر إيقاف)
+    const bgMusic = $('bg-music');
+    if (bgMusic) { bgMusic.play().catch(() => {}); }
     setTimeout(() => {
       document.body.style.overflow = '';
       curtain.style.display = 'none';
