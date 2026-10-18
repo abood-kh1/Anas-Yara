@@ -53,7 +53,7 @@ function doPost(e) {
     sheet.appendRow([
       name,
       message,
-      new Date().toLocaleString('ar-EG')
+      new Date()
     ]);
 
     return ContentService.createTextOutput('OK').setMimeType(ContentService.MimeType.TEXT);
@@ -90,7 +90,19 @@ function readRows() {
 function parseDate(value) {
   if (!value) return Date.now();
   if (value instanceof Date) return value.getTime();
-  var t = Date.parse(String(value).replace(/\//g, '-'));
+  var s = String(value).trim();
+  // تطبيع الأرقام العربية-الهندية (٠-٩) إلى إنجليزية
+  s = s.replace(/[\u0660-\u0669]/g, function (d) { return String(d.charCodeAt(0) - 0x0660); });
+  // صيغة dd/MM/yyyy أو dd-MM-yyyy مع وقت اختياري وعلامة ص/م (من السجلات القديمة)
+  var m = s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})(?:[,\u060C\s]+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(ص|م)?)?/);
+  if (m) {
+    var hh = +(m[4] || 0);
+    if (m[7] === 'م' && hh < 12) hh += 12;   // "م" تعني مساءً
+    else if (m[7] === 'ص' && hh === 12) hh = 0; // 12 ص = منتصف الليل
+    var dt = new Date(+m[3], +m[2] - 1, +m[1], hh, +(m[5] || 0), +(m[6] || 0));
+    if (!isNaN(dt.getTime())) return dt.getTime();
+  }
+  var t = Date.parse(s);
   return isNaN(t) ? Date.now() : t;
 }
 
