@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f6f4ef">
 <meta name="description" content="دعوة فرح أنس ويارا يوم الاثنين 2 نوفمبر 2026 في قاعة White Rose، غزة.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="دعوة أنس ويارا">
+<meta property="og:title" content="فرح أنس ويارا — الاثنين 2 نوفمبر 2026">
+<meta property="og:description" content="بكل الحب ندعوكم لحضور حفل زفاف أنس ويارا — الاثنين 2 نوفمبر 2026، الساعة 4:00 مساءً بتوقيت غزة، قاعة White Rose.">
+<meta property="og:url" content="https://anasandyara.vercel.app/">
+<meta property="og:image" content="https://anasandyara.vercel.app/photo/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="دعوة فرح أنس ويارا">
+<meta property="og:locale" content="ar_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="فرح أنس ويارا — الاثنين 2 نوفمبر 2026">
+<meta name="twitter:description" content="بكل الحب ندعوكم لحضور حفل زفاف أنس ويارا — الاثنين 2 نوفمبر 2026، الساعة 4:00 مساءً بتوقيت غزة، قاعة White Rose.">
+<meta name="twitter:image" content="https://anasandyara.vercel.app/photo/share.jpg">
 <link rel="icon" type="image/jpeg" href="photo/couple.jfif">
 <title>فرح أنس ويارا</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,11 +125,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .hosts-box{margin:18px auto 8px;max-width:420px;background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,.25));border:1px solid rgba(197,168,90,.45);border-radius:22px;padding:26px 20px;box-shadow:0 12px 30px rgba(140,83,105,.10),inset 0 0 0 5px rgba(255,255,255,.35);position:relative}
 .hosts-box::before{content:"✦";position:absolute;top:-14px;right:50%;transform:translateX(50%);background:#fcfaf6;border:1px solid rgba(197,168,90,.5);color:var(--gold-accent);width:28px;height:28px;border-radius:50%;font-size:14px;line-height:26px}
 .hosts-title{font-size:.85rem;letter-spacing:3px;color:#a9a494;margin-bottom:14px}
-.hosts-names{display:flex;align-items:center;justify-content:center;gap:14px 16px;flex-wrap:wrap}
-.host{display:flex;flex-direction:column;gap:5px;min-width:130px;align-items:center;text-align:center}
+.hosts-names{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.host{display:flex;flex-direction:column;gap:5px;align-items:center;text-align:center;width:100%}
 .host-role{font-size:.8rem;color:#a9a494;letter-spacing:1px}
 .host-name{font-family:'Aref Ruqaa',serif;font-size:1.75rem;color:var(--text-dark);line-height:1.6}
-.hosts-divider{color:var(--gold-accent);font-size:1.5rem}
+.hosts-divider{color:var(--gold-accent);font-size:1.5rem;line-height:1;margin:0}
 .hosts-sub{margin-top:14px;font-size:.92rem;color:#777;line-height:2}
 .welcome-names{font-weight:bold;font-size:1.2rem;color:var(--text-dark)}
 
@@ -150,11 +164,24 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .cal-day.muted{color:#cfc6ba}
 .cal-day.is-empty{visibility:hidden}
 .cal-day.wedding{font-family:'Aref Ruqaa',serif;font-size:1.15rem;color:#fff;font-weight:400;
-  background:linear-gradient(140deg,#8C5369,#a86a7e 60%,#c9a24f);width:36px;height:36px;margin:auto;border-radius:50%;
-  box-shadow:0 4px 12px rgba(140,83,105,.35),inset 0 0 0 2px rgba(255,255,255,.55);position:relative}
+  width:36px;height:36px;margin:auto;border-radius:50%;position:relative;
+  background-image:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.55) 50%,rgba(255,255,255,.78) 53%,transparent 66%),linear-gradient(140deg,#8C5369,#a86a7e 60%,#c9a24f);
+  background-size:220% 220%,100% 100%;background-position:-60% -60%,0 0;
+  box-shadow:0 4px 12px rgba(140,83,105,.35),inset 0 0 0 2px rgba(255,255,255,.55);
+  animation:dayGlow 2.2s ease-in-out infinite,dayShine 2.6s ease-in-out infinite}
+.cal-day.wedding::before{content:"";position:absolute;inset:-4px;border-radius:50%;pointer-events:none;
+  border:2px solid rgba(212,175,55,.9);box-shadow:0 0 10px rgba(197,168,90,.55);opacity:.85;
+  animation:dayHalo 2.2s ease-out infinite}
 .cal-day.wedding::after{content:"♥";position:absolute;bottom:-9px;font-size:.55rem;color:var(--gold-accent);
-  text-shadow:0 1px 3px rgba(255,255,255,.9);animation:heartBeat 1.8s ease-in-out infinite}
+  text-shadow:0 1px 3px rgba(255,255,255,.9);animation:heartBeat 2.2s ease-in-out infinite}
 @keyframes heartBeat{0%,100%{transform:scale(1)}25%{transform:scale(1.28)}40%{transform:scale(1)}}
+@keyframes dayGlow{
+  0%,100%{transform:scale(1);text-shadow:0 1px 2px rgba(90,50,60,.45);
+    box-shadow:0 4px 12px rgba(140,83,105,.35),inset 0 0 0 2px rgba(255,255,255,.55),0 0 0 rgba(197,168,90,0)}
+  50%{transform:scale(1.07);text-shadow:0 0 10px rgba(255,255,255,.95),0 0 20px rgba(255,232,170,.8);
+    box-shadow:0 7px 22px rgba(140,83,105,.5),inset 0 0 0 2px rgba(255,255,255,.9),0 0 20px 7px rgba(197,168,90,.55)}}
+@keyframes dayShine{0%{background-position:-60% -60%,0 0}70%,100%{background-position:160% 160%,0 0}}
+@keyframes dayHalo{0%{transform:scale(.92);opacity:.95}55%{opacity:.35}100%{transform:scale(1.5);opacity:0}}
 .calendar-foot{margin-top:16px;padding-top:13px;border-top:1px solid rgba(197,168,90,.4);text-align:center}
 .day-name{font-family:'Aref Ruqaa',serif;font-weight:400;font-size:1.35rem;color:var(--text-dark);margin-bottom:2px}
 .time{font-size:1.05rem;color:#8a6d2f;font-weight:700;direction:ltr;letter-spacing:1px}
