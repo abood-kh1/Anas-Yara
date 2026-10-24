@@ -1,0 +1,101 @@
+/* A paper invitation in ivory, antique rose and brushed gold. */
+:root{--paper:#fcf8f0;--rose:#8c5369;--ink:#50584c;--gold:#b69a60}
+*:focus-visible{outline:2px solid var(--rose)!important;outline-offset:5px}
+.curtain-overlay{background:radial-gradient(ellipse at 50% 25%,#fffdf8,#ede4d6);perspective:1200px;transition:opacity .65s ease .9s}
+.curtain-overlay::before{content:"";position:absolute;inset:24px;border:1px solid #b69a6050;pointer-events:none}
+.curtain-overlay::after{content:"دعوةٌ تحمل كلّ الحب";position:absolute;top:16%;font-family:Amiri,serif;font-size:1.4rem;color:#806d65}
+.curtain-left,.curtain-right{display:none}
+.entry-button-wrapper{width:min(340px,84vw);height:236px;perspective:1000px;border-radius:6px;background:linear-gradient(145deg,#f9f1e5,#eaddc9);box-shadow:0 28px 65px #68513d25,0 2px 4px #68513d14;transition:transform 1s ease .45s,opacity .65s ease .65s}
+.envelope-letter{position:absolute;inset:14px 16px 16px;background:#fffdf8;border:1px solid #c3a77666;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--rose);transition:transform .85s ease .35s;box-shadow:0 0 0 5px #fffdf8,0 0 0 6px #c3a77633}
+.envelope-letter strong{font-family:'Aref Ruqaa',serif;font-size:2rem;font-weight:400}
+.envelope-letter small{font-size:.7rem;letter-spacing:3px;color:#897c6e}
+.envelope-pocket{position:absolute;inset:0;z-index:2;background:linear-gradient(145deg,#f7eee0,#e9dcc8);clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%)}
+.envelope-flap{position:absolute;inset:0 0 45%;z-index:3;background:linear-gradient(175deg,#fffaf1,#e9dcc9);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s ease,filter .7s ease;filter:drop-shadow(0 2px 1px #8a705144)}
+.entry-circle{position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);z-index:4;width:76px;height:76px;background:radial-gradient(circle at 35% 28%,#b47a8b,#8c5369 65%,#744355);border:4px double #d5a3ad;border-radius:44% 48% 46% 49%;box-shadow:0 5px 12px #65434a40,inset 0 0 0 3px #7e425855;backdrop-filter:none;transition:opacity .25s ease,transform .45s ease}
+.circle-foliage{display:none}.entry-names{margin:0;color:#f6dfce;font-family:'Aref Ruqaa',serif;font-size:1.5rem;text-shadow:0 1px 1px #633245}
+.entry-open{position:absolute;top:154px;width:280px;color:#796a5e;border:0;letter-spacing:0;font-size:.87rem;padding:0}
+.curtain-opened .envelope-flap{transform:rotateX(180deg);filter:none;z-index:0}
+.curtain-opened .envelope-letter{transform:translateY(-95px)}
+.curtain-opened .entry-circle{opacity:0;transform:translate(-50%,-50%) scale(.8)}
+.curtain-opened .entry-button-wrapper{transform:translateY(55px) scale(1.12);opacity:0;visibility:visible}
+.curtain-opened{opacity:0;pointer-events:none}
+.hero{min-height:650px;height:86svh;max-height:900px;padding:90px 4px 70px;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:35px -5px 35px;border:1px solid #b69a6060;border-radius:160px 160px 10px 10px;z-index:-1;background:linear-gradient(180deg,#fffdf54d,#fffdf511);box-shadow:inset 0 0 0 7px #fffdf522}
+.hero-subtitle{font-family:Tajawal,sans-serif;font-size:.76rem;letter-spacing:3px;margin:20px 0 35px;color:#7c756a;text-transform:uppercase}
+.hero-names{font-weight:400;font-size:3.6rem}.title-prefix{font-size:.32em}.ampersand-wrapper{margin:7px 0}.ampersand{font-size:1.8rem;color:var(--gold)}
+.hero-date{margin-top:30px;font-size:.95rem;line-height:2.2}.scroll-indicator{bottom:4px;animation-duration:3.5s}
+.monogram{font-family:'Aref Ruqaa',serif;display:grid;place-items:center;width:64px;height:64px;border:1px solid #b69a6070;border-radius:50%;color:var(--rose);font-size:1.5rem;margin:0 auto 10px;background:#fffcf680}
+.guest-greeting{font-family:Amiri,serif;color:var(--rose);font-size:1.15rem;line-height:1.8;margin:12px 8px 0}.guest-greeting[hidden]{display:none}
+.botanical{position:absolute;width:100px;height:170px;pointer-events:none;color:#7a886b;opacity:.6;z-index:-1}.botanical-right{right:-24px;top:72px;transform:rotate(12deg)}.botanical-left{left:-24px;bottom:42px;transform:rotate(190deg)}
+.botanical path{fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round}.botanical ellipse{fill:currentColor;opacity:.5}
+.invitation-ready .hero-names,.invitation-ready .hero-date,.invitation-ready .hero .monogram,.invitation-ready .guest-greeting{animation:paperReveal 1s ease both}.invitation-ready .hero-names{animation-delay:.15s}.invitation-ready .hero-date{animation-delay:.45s}.invitation-ready .guest-greeting{animation-delay:.6s}
+@keyframes paperReveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.reveal-pending{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}.reveal-pending.is-visible{opacity:1;transform:none}
+.app-container{gap:42px}.card,.welcome-card,.comments-section,.timeline-section,.countdown-section{border-color:#b69a6030;box-shadow:0 14px 36px #654c3910;background-color:#fffdf5b8}
+.section-title{font-family:'Aref Ruqaa',serif;font-size:1.45rem;color:var(--rose)}
+.fx-orb{opacity:.2}.sparkle{width:3px;height:3px;animation-duration:5s}.fx-petal{width:9px;height:15px;border-radius:85% 0 85% 15%;background:linear-gradient(135deg,#d5a2ac99,#f2ded499);font-size:0;opacity:.35}
+.cal-day.wedding{animation:dayShine 6s ease-in-out infinite}.cal-day.wedding::before{animation:none;box-shadow:none;border-width:1px}.cal-day.wedding::after{animation:none}.story-overlay-title h2{animation:none}.timeline-item.active .dot{animation:none}.wa-pulse::after{animation:none}
+.moment-img{transition:transform 1.8s ease}.video-placeholder:hover .moment-img{transform:scale(1.045)}.poem-overlay{background:linear-gradient(180deg,#30262a22,#38252dbf)}.poem-overlay p{font-size:1.3rem}
+.wa-card{background:linear-gradient(140deg,#1faa54,#128c4a);border:1px solid #ffffff4d;color:#fff;box-shadow:0 12px 30px #128c4a33;padding:24px 20px}.wa-label{font-size:.9rem}.wa-btn{background:#fff;color:#128c4a;box-shadow:0 6px 18px #075c2f26;font-size:.9rem;padding:12px 23px}.wa-btn:hover{box-shadow:0 10px 24px #075c2f38}.wa-btn i{color:#159447}
+.utility-controls{position:fixed;top:max(14px,env(safe-area-inset-top));left:14px;z-index:1100;display:flex;gap:7px;opacity:0;visibility:hidden;transition:opacity .4s}.invitation-ready .utility-controls{opacity:1;visibility:visible}
+.utility-button{width:42px;height:42px;border:1px solid #b69a6055;border-radius:50%;background:#fffcf1e8;color:var(--rose);box-shadow:0 4px 16px #634b3e12;cursor:pointer;display:grid;place-items:center;font-size:1.1rem}
+.reading-progress{position:fixed;top:0;right:0;height:2px;width:0;background:var(--gold);z-index:1200;pointer-events:none}
+.bottom-nav{bottom:max(14px,env(safe-area-inset-bottom));border-color:#b69a6033}.toast{max-width:90vw;width:max-content;text-align:center;border-radius:16px}
+.modal-overlay.active{overflow-y:auto}.modal-content{width:min(100%,340px)}
+.comment-head{gap:4px 8px}.comment-time{display:block;flex-basis:100%;font-size:.67rem;line-height:1.8;color:#948275}
+/* Date suite: engraved paper calendar and matching countdown tiles. */
+.calendar-card{width:100%;max-width:340px;padding:27px 18px 17px;border-radius:115px 115px 26px 26px;background:radial-gradient(ellipse at 50% 12%,#efd0d987,transparent 49%),radial-gradient(ellipse at 100% 100%,#e9d5a947,transparent 50%),linear-gradient(150deg,#fffdf8,#fcf5ed);border:1px solid #c5a85a77;box-shadow:0 17px 36px #8c536918,0 0 0 5px #fffcf540,inset 0 0 0 5px #fffdf8,inset 0 0 0 6px #b69a6038;margin-top:6px;margin-bottom:23px;overflow:hidden;isolation:isolate}
+.calendar-kicker{text-align:center;font-size:.7rem;color:#8b795d;letter-spacing:.5px;margin:8px 0 8px;line-height:1.8}
+.calendar-special-date{position:relative;display:flex;align-items:center;justify-content:center;gap:13px;direction:ltr;margin:0 auto;width:fit-content;padding:0 14px;color:var(--rose);isolation:isolate}
+.calendar-special-date::before{content:"";position:absolute;inset:6px -12px;background:radial-gradient(ellipse,#e6b9c85c,transparent 70%);z-index:-1;animation:date-aura 4.5s ease-in-out infinite}
+.calendar-special-date b{font-family:Georgia,'Times New Roman',serif;font-size:2.9rem;font-weight:400;line-height:1.25;letter-spacing:-1px;text-shadow:0 1px 0 #fff}
+.calendar-special-date>span{font-family:Georgia,serif;font-size:1.6rem;line-height:1;color:#b69659;animation:wedding-heartbeat 3.8s ease-in-out infinite}
+.calendar-dedication{text-align:center;font-family:Amiri,serif;font-size:.87rem;color:#947282;margin:4px 0 16px}.calendar-dedication span{color:var(--gold);margin:0 4px}
+.calendar-sparkles{position:absolute;inset:0;pointer-events:none;z-index:-1}.calendar-sparkles span{position:absolute;color:#b69a60;font-size:12px;animation:calendar-twinkle 4.5s ease-in-out infinite}.calendar-sparkles span:nth-child(1){top:72px;right:28px}.calendar-sparkles span:nth-child(2){top:112px;left:29px;color:#c18d9e;font-size:15px;animation-delay:-1.3s}.calendar-sparkles span:nth-child(3){top:32px;left:62px;font-size:17px;animation-delay:-2.6s}.calendar-sparkles span:nth-child(4){top:145px;right:38px;font-size:8px;animation-delay:-3.7s}
+@keyframes date-aura{0%,100%{opacity:.45}50%{opacity:1}}
+@keyframes calendar-twinkle{0%,100%{opacity:.35;transform:scale(.85) rotate(-8deg)}50%{opacity:.85;transform:scale(1.1) rotate(8deg)}}
+.calendar-rings,.cal-corner{display:none}
+.calendar-inner{border:0;border-radius:0;padding:4px 0 0;background:none}.calendar-inner::after{display:none}
+.calendar-head{display:flex;flex-direction:row;justify-content:center;align-items:baseline;gap:12px;margin:0}.calendar-head .month{font-size:1.5rem;line-height:1.5;color:var(--rose)}.calendar-head .year{font-size:.68rem;color:#8e805f;letter-spacing:3px}
+.cal-rule{margin:8px 0 13px;gap:12px}.cal-rule:before,.cal-rule:after{width:65px;opacity:.65}.cal-rule span{font-size:16px}
+.cal-weekdays{gap:0;border-bottom:1px solid #b69a6030;margin-bottom:8px;padding-bottom:8px}.cal-weekdays span{font-size:.64rem;padding:0;color:#918477}.cal-weekdays span:first-child{color:#918477;font-weight:400}
+.cal-weekdays span:nth-child(2){color:var(--rose);font-weight:700}
+.cal-grid{gap:6px 0}.cal-day{height:32px;font-size:.8rem;color:#777569;font-variant-numeric:tabular-nums;font-weight:400}
+.cal-day.wedding{width:34px;height:32px;font-family:Tajawal,sans-serif;font-size:.95rem;font-weight:700;background:none;border-radius:0;box-shadow:none;color:#fff9f1;isolation:isolate;animation:wedding-heartbeat 3.8s ease-in-out infinite}
+.cal-day.wedding::before{content:"";display:block;position:absolute;inset:-6px;border:0;border-radius:50%;background:radial-gradient(circle,#d3a6b24d,transparent 70%);z-index:-2;opacity:1;box-shadow:none;animation:date-aura 3.8s ease-in-out infinite}.cal-day.wedding::after{display:none}
+.calendar-heart{position:absolute;width:42px;height:40px;left:50%;top:50%;transform:translate(-50%,-47%);overflow:visible;filter:drop-shadow(0 3px 5px #8c53694d);z-index:-1}
+.calendar-heart path{fill:url(#calendar-rose);stroke:#c5a85a;stroke-width:.9}
+.wedding-number{position:relative;z-index:1;transform:translateY(-1px)}
+.calendar-foot{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:15px 2px 2px;margin-top:14px;border-color:#b69a602e}.day-name{display:flex;align-items:center;gap:6px;font-size:1.05rem;color:var(--rose);margin:0;padding:6px 9px;background:#f1e0e455;border-radius:20px}.date-heart{display:inline-block;font-family:Georgia,serif;font-size:1.4rem;color:#ae7e90;line-height:1;animation:wedding-heartbeat 3.8s ease-in-out infinite}.calendar-foot .time{font-family:Tajawal,sans-serif;color:#7b6949;font-size:.8rem;letter-spacing:.5px}.calendar-foot .time small{font-size:.58rem;letter-spacing:0;margin-top:5px;color:#918477}
+@keyframes wedding-heartbeat{0%,30%,60%,100%{transform:scale(1)}40%{transform:scale(1.09)}48%{transform:scale(1.015)}53%{transform:scale(1.055)}}
+.save-date-btn{background:#fffaf0aa;border-color:#b69a6060;font-size:.85rem;color:#80664d;padding:11px 25px;box-shadow:0 5px 15px #79624d08}.save-date-btn:hover{background:#fffcf7;border-color:var(--gold)}
+.countdown-section{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:stretch;border-radius:36px;padding:23px 14px 22px;background:radial-gradient(ellipse at 12% 0,#e8c5cd8c,transparent 55%),radial-gradient(ellipse at 95% 100%,#e9d5a970,transparent 60%),linear-gradient(145deg,#fffcf7fa,#fff5edf5);border:1px solid #d4b68b88;box-shadow:0 17px 40px #8c53691c,0 0 0 5px #fffaf340,inset 0 1px 0 #fff;overflow:hidden;text-align:center;backdrop-filter:none}
+.countdown-section::before{content:"";position:absolute;inset:7px;border:1px solid #b69a6038;border-radius:29px;pointer-events:none;z-index:-1}
+.countdown-section::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 43%,#fff7 48%,#f6dfad33 50%,transparent 55%);background-size:300% 100%;background-position:130% 0;animation:celebration-shine 8s ease-in-out infinite;pointer-events:none;z-index:2;border-radius:inherit}
+.countdown-emblem{width:90px;height:53px;margin:0 auto 9px;position:relative;filter:drop-shadow(0 3px 5px #b69a6014)}.countdown-emblem svg{width:100%;height:100%;overflow:visible}.countdown-emblem .emblem-ring{fill:none;stroke:url(#countdown-gold);stroke-width:2}.countdown-emblem .emblem-ring-inner{fill:none;stroke:#d8c29877;stroke-width:.6}.countdown-emblem .emblem-heart{fill:#b67b8c;stroke:#fff9;stroke-width:.6;transform-origin:55px 11px;animation:wedding-heartbeat 3.8s ease-in-out infinite}.countdown-emblem .emblem-flourish{fill:none;stroke:#b69a6080;stroke-width:.8;stroke-linecap:round}.countdown-emblem .emblem-star{fill:#c5a85a;animation:emblem-glimmer 4s ease-in-out infinite}.countdown-emblem .emblem-star:last-child{animation-delay:2s}
+@keyframes emblem-glimmer{0%,100%{opacity:.35}50%{opacity:1}}
+.countdown-kicker{text-align:center;color:#8d7b65;font-size:.68rem;letter-spacing:.5px;margin-bottom:3px}.countdown-section .section-title{font-size:2.05rem;margin-bottom:17px;font-weight:400;color:#8c5369;text-shadow:0 1px 0 #fff}.countdown-section .section-title::after{content:"";display:block;width:54px;height:1px;margin:12px auto 0;background:linear-gradient(90deg,transparent,#b69a60aa,transparent)}
+.countdown-boxes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;padding:5px 0;direction:rtl;background:none;border-radius:0}
+.countdown-boxes .box{position:relative;min-width:0;max-width:none;width:100%;padding:21px 1px 18px;background:#fffcf6c9;border:1px solid #c9a6ae30;border-radius:17px;box-shadow:0 3px 9px #8c536907;overflow:visible;transition:none}
+.countdown-boxes .box::before,.countdown-boxes .box::after{display:none}
+.countdown-boxes .box+.box::before{display:none}
+.countdown-boxes .num{position:relative;font-family:Tajawal,sans-serif;font-size:clamp(2.35rem,10.3vw,3rem);font-weight:500;line-height:1.12;letter-spacing:-1px;color:#82485f;font-variant-numeric:tabular-nums;direction:ltr;margin:0 0 11px;text-shadow:none}
+.countdown-boxes .label{display:block;padding:0;font-size:.73rem;font-weight:400;line-height:1.5;letter-spacing:0;color:#827268}
+.countdown-boxes .label::before{display:none}
+.countdown-boxes .box:hover{transform:none;box-shadow:none}
+.countdown-caption{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:17px;font-size:.68rem;line-height:1.8;color:#8b796a}.countdown-caption span{font-size:1rem;color:var(--gold)}
+.countdown-caption .caption-rule{display:inline-block;width:18px;height:1px;background:#b69a6077;margin:0 1px}
+.celebrate-button{position:relative;z-index:3;display:inline-flex;align-self:center;align-items:center;gap:10px;margin-top:14px;border:1px solid #c5a85a55;border-radius:30px;padding:9px 18px;background:linear-gradient(120deg,#fffaf4aa,#f6e9dda6);font-family:Tajawal,sans-serif;font-size:.75rem;color:#8c5369;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 3px 12px #8c536908}.celebrate-button span:first-child{font-size:1.2rem;line-height:1;color:#ac748a}.celebrate-button span:last-child{font-size:.8rem;color:#b69a60}.celebrate-button:hover{transform:translateY(-2px);box-shadow:0 6px 18px #8c53691a}.celebrate-button:active{transform:scale(.97)}
+.celebration-confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:4;border-radius:inherit}
+.joy-particle{position:absolute;left:var(--x);top:var(--y);color:var(--color);font-family:Georgia,serif;line-height:1;font-size:var(--size);opacity:0;animation:joy-burst 2.6s cubic-bezier(.12,.6,.35,1) var(--delay) both;will-change:transform,opacity}
+@keyframes joy-burst{0%{opacity:0;transform:translate(0,10px) rotate(0) scale(.45)}12%{opacity:.9}70%{opacity:.75}100%{opacity:0;transform:translate(var(--drift),-210px) rotate(var(--spin)) scale(1)}}
+@keyframes celebration-shine{0%,45%{background-position:130% 0}80%,100%{background-position:-80% 0}}
+@media(prefers-reduced-motion:reduce){.countdown-section::after{display:none}.joy-particle{display:none}}
+.countdown-boxes .num.digit-changed{animation:digit-turn .5s ease both}
+@keyframes digit-turn{from{opacity:.94;transform:translateY(1px)}to{opacity:1;transform:none}}
+#btn-gift .icon{position:relative;background:#efe4d6;color:var(--rose);animation:gift-breathe 3s ease-in-out infinite}
+#btn-gift .icon::after{content:"";position:absolute;inset:-3px;border:1px solid #b69a6080;border-radius:50%;animation:gift-ring 3s ease-out infinite;pointer-events:none}
+@keyframes gift-breathe{0%,45%,100%{transform:scale(1);box-shadow:0 0 0 #b69a6000}60%{transform:scale(1.1);box-shadow:0 0 13px #b69a6038}75%{transform:scale(1.02)}85%{transform:scale(1.06)}}
+@keyframes gift-ring{0%,45%{transform:scale(.95);opacity:0}55%{opacity:.65}90%,100%{transform:scale(1.4);opacity:0}}
+@media(max-width:360px){.hero{min-height:590px}.hero-names{font-size:3rem}.hero-subtitle{font-size:.65rem}.botanical{width:75px}.poem-overlay{padding:18px}.poem-overlay p{font-size:1.15rem}}
+@media(prefers-reduced-motion:reduce){.reveal-pending{opacity:1;transform:none}.curtain-overlay,.entry-button-wrapper,.envelope-letter{transition:none}.invitation-ready .hero-names,.invitation-ready .hero-date{animation:none}.fx-layer{display:none}}

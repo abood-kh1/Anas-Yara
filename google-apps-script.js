@@ -78,7 +78,7 @@ function readRows() {
     out.push({
       name: name,
       message: message,
-      time: parseDate(values[i][2])
+      time: parseDate(values[i][2], sheet.getParent().getSpreadsheetTimeZone())
     });
   }
 
@@ -86,24 +86,33 @@ function readRows() {
   return out.slice(0, 100); // حد أقصى 100 تعليق معروضة
 }
 
-/** تحويل خلية التاريخ إلى رقم milliseconds لاستخدام timeAgo */
-function parseDate(value) {
-  if (!value) return Date.now();
-  if (value instanceof Date) return value.getTime();
+/** إرجاع وقت الإضافة المحفوظ، دون اختلاق وقت للتعليقات القديمة. */
+function parseDate(value, timeZone) {
+  if (value === null || value === undefined || value === '') return null;
+  if (value instanceof Date) return isNaN(value.getTime()) ? null : value.getTime();
+  if (typeof value === 'number') {
+    if (value > 1e12) return value;
+    if (value > 1e9 && value < 1e11) return value * 1000;
+    return null;
+  }
   var s = String(value).trim();
   // تطبيع الأرقام العربية-الهندية (٠-٩) إلى إنجليزية
   s = s.replace(/[\u0660-\u0669]/g, function (d) { return String(d.charCodeAt(0) - 0x0660); });
+  s = s.replace(/[\u06f0-\u06f9]/g, function (d) { return String(d.charCodeAt(0) - 0x06f0); }).replace(/[\u200e\u200f\u061c]/g, '');
   // صيغة dd/MM/yyyy أو dd-MM-yyyy مع وقت اختياري وعلامة ص/م (من السجلات القديمة)
-  var m = s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})(?:[,\u060C\s]+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(ص|م)?)?/);
+  var m = s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})(?:[,\u060C\s]+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(ص|م|AM|PM)?)?$/i);
   if (m) {
     var hh = +(m[4] || 0);
-    if (m[7] === 'م' && hh < 12) hh += 12;   // "م" تعني مساءً
-    else if (m[7] === 'ص' && hh === 12) hh = 0; // 12 ص = منتصف الليل
-    var dt = new Date(+m[3], +m[2] - 1, +m[1], hh, +(m[5] || 0), +(m[6] || 0));
-    if (!isNaN(dt.getTime())) return dt.getTime();
+    var period = (m[7] || '').toUpperCase();
+    if ((period === 'م' || period === 'PM') && hh < 12) hh += 12;
+    else if ((period === 'ص' || period === 'AM') && hh === 12) hh = 0;
+    var dateText = m[3] + '-' + ('0' + m[2]).slice(-2) + '-' + ('0' + m[1]).slice(-2) + ' ' + ('0' + hh).slice(-2) + ':' + (m[5] || '00') + ':' + (m[6] || '00');
+    try {
+      return Utilities.parseDate(dateText, timeZone || 'Asia/Gaza', 'yyyy-MM-dd HH:mm:ss').getTime();
+    } catch (err) { return null; }
   }
   var t = Date.parse(s);
-  return isNaN(t) ? Date.now() : t;
+  return isNaN(t) ? null : t;
 }
 
 /** فتح ملف Excel المرتبط، وإنشاء صف العناوين تلقائيًا */

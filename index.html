@@ -344,6 +344,8 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 @media(max-width:520px){.hero-names{font-size:2.9rem}.countdown-boxes{gap:8px}.countdown-boxes .box{max-width:78px;padding:15px 5px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
+<link rel="stylesheet" href="invitation.css">
+<link rel="stylesheet" href="opening.css">
 </head>
 <body>
 <div class="bg-photo" style="background-image:url('photo/bg.jfif')" aria-hidden="true"></div>
@@ -354,20 +356,29 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 
   <!-- ستارة الدخول -->
   <div id="curtain-container" class="curtain-overlay">
-    <div class="curtain-left"></div>
-    <div class="curtain-right"></div>
+    <div class="intro-halo" aria-hidden="true"></div>
+    <div class="intro-orbit" aria-hidden="true"></div>
+    <div class="intro-heading">
+      <p class="intro-eyebrow">بكلّ الحب · WEDDING INVITATION</p>
+      <h2 class="intro-title" dir="ltr">Anas <span>&amp;</span> Yara</h2>
+      <p class="intro-subtitle">تكتمل بحضوركم أجمل بداياتنا</p>
+    </div>
     <div class="entry-button-wrapper" id="start-invitation" role="button" tabindex="0" aria-label="افتح الدعوة">
+      <div class="envelope-letter"><small>بِكُلّ الحُبّ</small><strong>أنس ويارا</strong><small>02 · 11 · 2026</small></div>
+      <div class="envelope-flap" aria-hidden="true"></div><div class="envelope-pocket" aria-hidden="true"></div>
       <div class="entry-circle">
         <div class="circle-foliage"></div>
-        <p class="entry-names">أنس<br>&amp;<br>يارا</p>
-        <span class="entry-open">OPEN</span>
+        <p class="entry-names">أ &amp; ي</p>
       </div>
+      <span class="entry-open">افتح الحكاية <span aria-hidden="true">↗</span></span>
     </div>
+    <div class="intro-footer"><span class="intro-line" aria-hidden="true"></span><p dir="ltr">02 <span> / </span> 11 <span> / </span> 2026</p><small>دعوة خاصة · بكلّ الحب</small></div>
   </div>
 
   <div class="app-container max-w-[393px]">
 
     <header class="hero">
+      <div class="monogram" aria-hidden="true">أ &amp; ي</div>
       <h1 class="hero-names">
         <span class="hero-subtitle">Wedding Invitation</span>
         <span class="name-wrapper"><span class="title-prefix">Mr.</span><span class="name-text">Anas</span></span>
@@ -375,6 +386,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         <span class="name-wrapper"><span class="title-prefix">Eng.</span><span class="name-text">Yara</span></span>
       </h1>
       <p class="hero-date">الاثنيــن، <b>2 نوفمبر 2026</b> في <b>4:00 مساءً</b></p>
+      <p id="guest-greeting" class="guest-greeting" hidden></p>
       <div class="scroll-indicator"><i class="ph ph-caret-double-down icon"></i></div>
     </header>
 
@@ -407,6 +419,10 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
       <p class="location-name">صالة وقاعة White Rose</p>
       <p class="location-address">غزة · تل الهوا<br>بالقرب من دوار أبو مازن</p>
       <div class="calendar-card">
+        <div class="calendar-sparkles" aria-hidden="true"><span>✦</span><span>♡</span><span>✧</span><span>✦</span></div>
+        <p class="calendar-kicker">في هذا اليوم… تبدأ حكايتنا</p>
+        <time class="calendar-special-date" datetime="2026-11-02" aria-label="2 نوفمبر 2026"><b>02</b><span aria-hidden="true">♡</span><b>11</b></time>
+        <p class="calendar-dedication">أنس ويارا <span aria-hidden="true">·</span> يومٌ نختاره للعُمر</p>
         <div class="calendar-rings"><div class="ring"></div><div class="ring"></div></div>
         <div class="calendar-inner">
           <span class="cal-corner tl"></span><span class="cal-corner tr"></span>
@@ -424,7 +440,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 
           <div class="cal-grid" role="img" aria-label="تقويم نوفمبر 2026 — يوم الزفاف الاثنين 2 نوفمبر">
             <span class="cal-day">1</span>
-            <span class="cal-day wedding" aria-label="يوم الزفاف">2</span>
+            <span class="cal-day wedding" aria-label="يوم الزفاف"><svg class="calendar-heart" viewBox="0 0 40 38" aria-hidden="true"><defs><linearGradient id="calendar-rose" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ce9bad"/><stop offset=".6" stop-color="#9b5e77"/><stop offset="1" stop-color="#87465f"/></linearGradient></defs><path d="M20 35C16 31 3 22 3 12C3 2 15 0 20 9C25 0 37 2 37 12C37 22 24 31 20 35Z"/></svg><span class="wedding-number">2</span></span>
             <span class="cal-day">3</span>
             <span class="cal-day">4</span>
             <span class="cal-day">5</span>
@@ -456,7 +472,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
           </div>
 
           <div class="calendar-foot">
-            <div class="day-name">الاثنيــن · 2 نوفمبر</div>
+            <div class="day-name"><span class="date-heart" aria-hidden="true">♡</span><span>الاثنيــن · 2 نوفمبر</span></div>
             <div class="time">PM 4:00<small>بتوقيت غزة</small></div>
           </div>
         </div>
@@ -465,13 +481,26 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     </section>
 
     <section class="countdown-section">
-      <h3 class="section-title">العد التنازلي</h3>
+      <div class="celebration-confetti" aria-hidden="true"></div>
+      <div class="countdown-emblem" aria-hidden="true"><svg viewBox="0 0 110 65">
+        <defs><linearGradient id="countdown-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dec899"/><stop offset=".45" stop-color="#a68b4e"/><stop offset=".75" stop-color="#e1c99b"/><stop offset="1" stop-color="#b29659"/></linearGradient></defs>
+        <circle class="emblem-ring" cx="44" cy="38" r="18"/><circle class="emblem-ring-inner" cx="44" cy="38" r="15.5"/>
+        <circle class="emblem-ring" cx="66" cy="38" r="18"/><circle class="emblem-ring-inner" cx="66" cy="38" r="15.5"/>
+        <path class="emblem-heart" d="M55 21C51 17 45 13 45 8C45 2 52 2 55 7C58 2 65 2 65 8C65 13 59 17 55 21Z"/>
+        <path class="emblem-flourish" d="M15 44Q17 56 33 60M18 50L12 48M23 55L19 59M95 44Q93 56 77 60M92 50L98 48M87 55L91 59"/>
+        <path class="emblem-star" d="M16 23L18 28L23 30L18 32L16 37L14 32L9 30L14 28Z"/>
+        <path class="emblem-star" d="M94 13L95.5 17L100 18.5L95.5 20L94 24L92.5 20L88 18.5L92.5 17Z"/>
+      </svg></div>
+      <p class="countdown-kicker">موعدنا مع أجمل يوم</p>
+      <h3 class="section-title">باقي لفرحتنا</h3>
       <div class="countdown-boxes">
         <div class="box"><span class="num" id="days">--</span><span class="label">أيام</span></div>
         <div class="box"><span class="num" id="hours">--</span><span class="label">ساعات</span></div>
         <div class="box"><span class="num" id="minutes">--</span><span class="label">دقائق</span></div>
         <div class="box"><span class="num" id="seconds">--</span><span class="label">ثواني</span></div>
       </div>
+      <p class="countdown-caption">أنس <span aria-hidden="true">♡</span> يارا <span class="caption-rule" aria-hidden="true"></span> فرحتنا تكمل بكم</p>
+      <button class="celebrate-button" id="celebrate-countdown" type="button"><span aria-hidden="true">♡</span> انثروا لنا الفرح <span aria-hidden="true">✦</span></button>
     </section>
 
     <section class="details-section">
@@ -487,9 +516,9 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     </section>
 
     <section class="moments-section">
-      <h3 class="section-title">لحظات من الحفل</h3>
+      <h3 class="section-title">بداية حكايتنا</h3>
       <div class="video-placeholder">
-        <img class="moment-img" src="photo/couple.jfif" alt="أنس ويارا">
+        <img loading="lazy" class="moment-img" src="photo/couple.jfif" alt="أنس ويارا">
         <div class="poem-overlay">
           <p>في دروبِ الفرحِ وُلدَتْ حكايتُنا<br>وكبِرَتْ معَنا حتى أزهرتْ أمانينا<br>ما كانَ حبًّا يُروى ثمَّ يُنسى<br>بل كانَ فصلًا خالدًا… كتبَهُ القدرُ لنا</p>
         </div>
@@ -506,8 +535,8 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
       <p class="comments-sub">اكتب لنا رسالة 💌 — كل رسالة بتوصلنا وبتتنحفظ عندنا بحب</p>
 
       <form class="comment-form" id="comment-form" autocomplete="off">
-        <input class="comment-input" id="comment-name" type="text" placeholder="اسمك الكريم" maxlength="40" required>
-        <textarea class="comment-textarea" id="comment-text" placeholder="اكتب رسالتك هنا..." maxlength="300" rows="3" required></textarea>
+        <input class="comment-input" id="comment-name" type="text" aria-label="اسمك الكريم" placeholder="اسمك الكريم" maxlength="40" required>
+        <textarea class="comment-textarea" id="comment-text" aria-label="رسالتك للعروسين" placeholder="اكتب رسالتك هنا..." maxlength="300" rows="3" required></textarea>
         <div class="comment-actions">
           <span class="comment-counter" id="comment-counter">0 / 300</span>
           <button class="comment-btn" type="submit" id="comment-send"><i class="ph ph-paper-plane-tilt"></i><span>إرسال</span></button>
@@ -535,16 +564,16 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     </section>
 
     <section class="story-section">
-      <div class="story-header" id="story-toggle">
+      <div class="story-header" id="story-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="story-content">
         <div class="story-image-container">
-          <img class="story-photo" src="photo/couple.jfif" alt="أنس ويارا">
+          <img class="story-photo" loading="lazy" src="photo/bg.jfif" alt="أنس ويارا">
           <div class="story-overlay-title">
             <h2>أنس ويارا</h2>
             <i class="ph ph-caret-down" id="story-arrow"></i>
           </div>
         </div>
       </div>
-      <div class="story-content">
+      <div class="story-content" id="story-content">
         <p>بكل الحب والفرح ندعوكم لمشاركتنا أجمل لحظاتنا يوم الاثنين 2 نوفمبر 2026 في قاعة White Rose بغزة. وجودكم يزيد فرحتنا نورًا وسعادة، وننتظركم بكل حب لنصنع معًا ذكرى لا تُنسى 🤍</p>
       </div>
     </section>
@@ -566,10 +595,15 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 
   </div>
 
-  <nav class="bottom-nav">
+  <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+  <div class="utility-controls" role="group" aria-label="التحكم بالدعوة">
+    <button type="button" class="utility-button" id="toggle-music" aria-label="تشغيل الموسيقى" aria-pressed="false"></button>
+    <button type="button" class="utility-button" id="toggle-autoscroll" aria-label="استئناف التمرير التلقائي" aria-pressed="false"><i class="ph ph-play" aria-hidden="true"></i></button>
+  </div>
+  <nav class="bottom-nav" aria-label="خيارات الدعوة">
     <button class="nav-item" id="btn-qr"><span class="icon"><i class="ph ph-qr-code"></i></span><span class="label">رمز الدعوة</span></button>
     <button class="nav-item" id="btn-location"><span class="icon"><i class="ph ph-map-pin"></i></span><span class="label">الموقع</span></button>
-    <button class="nav-item center-action" id="btn-share"><div class="gold-circle"><i class="ph ph-share-network"></i></div></button>
+    <button class="nav-item center-action" id="btn-share" aria-label="مشاركة الدعوة"><div class="gold-circle"><i class="ph ph-share-network"></i></div></button>
     <button class="nav-item" id="btn-gift"><span class="icon"><i class="ph ph-gift"></i></span><span class="label">هدية</span></button>
     <button class="nav-item" id="btn-comments"><span class="icon"><i class="ph ph-chat-circle-text"></i></span><span class="label">رسائل</span></button>
   </nav>
@@ -603,20 +637,20 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   <div id="qr-modal" class="modal-overlay">
     <div class="modal-content">
       <button class="close-modal" id="close-qr-modal">×</button>
-      <h3>رمز دخول الحفل</h3>
+      <h3>رمز الدعوة</h3>
       <div class="qr-container"><img id="qr-image" class="qr-image" alt="رمز QR للدعوة"></div>
-      <p style="margin-top:15px">يُرجى إبراز هذا الرمز عند المدخل.</p>
+      <p style="margin-top:15px">امسح الرمز لفتح الدعوة والوصول إلى تفاصيل الحفل.</p>
       <p>أنس &amp; يارا · 02/11/2026</p>
       <div style="display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap">
         <button class="map-link" id="download-qr" style="border:0;cursor:pointer;font-family:inherit">تحميل الرمز ⬇️</button>
         <button class="map-link" id="copy-qr-link" style="border:0;cursor:pointer;font-family:inherit;background:#8C5369">نسخ الرابط 🔗</button>
       </div>
-      <p style="margin-top:12px;font-size:.8rem">ملاحظة: حافظ على الرمز ولا تشاركه مع أحد</p>
+      <p style="margin-top:12px;font-size:.8rem">يمكن مشاركة الرمز مع المدعوين لفتح الدعوة</p>
     </div>
   </div>
 
-  <div class="toast" id="toast"></div>
-  <audio id="bg-music" loop preload="auto">
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <audio id="bg-music" loop preload="none">
     <source src="music/music.mp3" type="audio/mpeg">
   </audio>
 </div>
@@ -627,17 +661,26 @@ const $ = (id) => document.getElementById(id);
 const toast = (msg) => { const b = $('toast'); b.textContent = msg; b.classList.add('show'); setTimeout(() => b.classList.remove('show'), 2600); };
 
 function pad(n){ return (n < 10 ? '0' : '') + n; }
+function setCountdownNumber(id, value){
+  const digit = $(id), next = String(value);
+  if (digit.textContent === next) return;
+  digit.textContent = next;
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    digit.classList.remove('digit-changed');
+    void digit.offsetWidth;
+    digit.classList.add('digit-changed');
+  }
+}
 function updateCountdown(){
   const distance = eventDate - Date.now();
   if (distance <= 0) {
-    $('days').textContent = '00'; $('hours').textContent = '00';
-    $('minutes').textContent = '00'; $('seconds').textContent = '00';
+    ['days','hours','minutes','seconds'].forEach(id => setCountdownNumber(id, '00'));
     return;
   }
-  $('days').textContent = pad(Math.floor(distance / 864e5));
-  $('hours').textContent = pad(Math.floor(distance % 864e5 / 36e5));
-  $('minutes').textContent = pad(Math.floor(distance % 36e5 / 6e4));
-  $('seconds').textContent = pad(Math.floor(distance % 6e4 / 1e3));
+  setCountdownNumber('days', pad(Math.floor(distance / 864e5)));
+  setCountdownNumber('hours', pad(Math.floor(distance % 864e5 / 36e5)));
+  setCountdownNumber('minutes', pad(Math.floor(distance % 36e5 / 6e4)));
+  setCountdownNumber('seconds', pad(Math.floor(distance % 6e4 / 1e3)));
 }
 updateCountdown(); setInterval(updateCountdown, 1000);
 
@@ -720,9 +763,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // ===== الخلفية التفاعلية: بتلات متساقطة + وميض + حركة مع المؤشر =====
   const fx = document.querySelector('.fx-layer');
-  if (fx) {
-    const petals = ['🌸','🤍','✦','❀','🌷'];
-    for (let i = 0; i < 16; i++) {
+  if (fx && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const petals = [''];
+    for (let i = 0; i < 8; i++) {
       const p = document.createElement('div');
       p.className = 'fx-petal';
       p.textContent = petals[i % petals.length];
@@ -732,7 +775,7 @@ document.addEventListener('DOMContentLoaded', function(){
       p.style.animationDelay = (-Math.random() * 20) + 's';
       fx.appendChild(p);
     }
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 6; i++) {
       const s = document.createElement('div');
       s.className = 'sparkle';
       s.style.top = (Math.random() * 100) + '%';
@@ -756,7 +799,7 @@ document.addEventListener('DOMContentLoaded', function(){
       cx += (tx - cx) * .06;
       cy += (ty - cy) * .06;
       // طبقة الصورة تتحرك عكس الحركة البطيئة، فتعطي عمقًا (parallax مضاعف)
-      bgImg.style.translate = (-cx * .55 + 'px,' + -cy * .55 + 'px');
+      bgImg.style.translate = (-cx * .55 + 'px ' + -cy * .55 + 'px');
       fx.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
       requestAnimationFrame(parallax);
     })();
@@ -765,24 +808,47 @@ document.addEventListener('DOMContentLoaded', function(){
   // الستارة + التمرير التلقائي (نفس حركة الموقع المرجعي)
   const curtain = $('curtain-container'), startBtn = $('start-invitation');
   document.body.style.overflow = 'hidden';
-  let scrollSpeed = 1, autoScrollAnimation;
-  function scrollStep(){
-    window.scrollTo(0, window.scrollY + scrollSpeed);
-    if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 5) { stopScroll(); }
-    else { autoScrollAnimation = requestAnimationFrame(scrollStep); }
+  let autoScrollAnimation, lastScrollTime = 0, scrollPosition = 0, scrolling = false;
+  const scrollButton = $('toggle-autoscroll');
+  function updateScrollButton(){
+    scrollButton.setAttribute('aria-pressed', String(scrolling));
+    const label = scrolling ? 'إيقاف التمرير التلقائي' : 'استئناف التمرير التلقائي';
+    scrollButton.setAttribute('aria-label', label); scrollButton.title = label;
+    scrollButton.innerHTML = '<i aria-hidden="true" class="ph ' + (scrolling ? 'ph-pause' : 'ph-play') + '"></i>';
+  }
+  function scrollStep(time){
+    if (!scrolling) return;
+    if (!lastScrollTime) lastScrollTime = time;
+    scrollPosition += Math.min(time - lastScrollTime, 50) * .045;
+    lastScrollTime = time;
+    window.scrollTo(0, scrollPosition);
+    if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 5) stopScroll();
+    else autoScrollAnimation = requestAnimationFrame(scrollStep);
   }
   function stopScroll(){
+    scrolling = false;
     if (autoScrollAnimation) cancelAnimationFrame(autoScrollAnimation);
     window.removeEventListener('wheel', stopScroll);
-    window.removeEventListener('touchstart', stopScroll);
-    window.removeEventListener('mousedown', stopScroll);
+    window.removeEventListener('touchstart', onScrollInteraction);
+    window.removeEventListener('pointerdown', onScrollInteraction);
+    window.removeEventListener('keydown', onScrollKey);
+    updateScrollButton();
   }
+  function onScrollInteraction(e){ if (!scrollButton.contains(e.target)) stopScroll(); }
+  function onScrollKey(e){ if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End','Tab',' '].includes(e.key)) stopScroll(); }
   function startAutoScroll(){
+    if (scrolling) return;
+    scrolling = true; lastScrollTime = 0; scrollPosition = window.scrollY;
     window.addEventListener('wheel', stopScroll, {passive:true});
-    window.addEventListener('touchstart', stopScroll, {passive:true});
-    window.addEventListener('mousedown', stopScroll, {passive:true});
+    window.addEventListener('touchstart', onScrollInteraction, {passive:true});
+    window.addEventListener('pointerdown', onScrollInteraction, {passive:true});
+    window.addEventListener('keydown', onScrollKey);
+    updateScrollButton();
     autoScrollAnimation = requestAnimationFrame(scrollStep);
   }
+  scrollButton.addEventListener('click', () => scrolling ? stopScroll() : startAutoScroll());
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopScroll(); });
+  updateScrollButton();
   let invitationOpening = false;
   function openInvitation(){
     if (invitationOpening) return;
@@ -805,17 +871,11 @@ document.addEventListener('DOMContentLoaded', function(){
     setTimeout(() => {
       document.body.style.overflow = '';
       curtain.style.display = 'none';
+      document.body.classList.add('invitation-ready');
       void document.body.offsetHeight;
       requestAnimationFrame(() => requestAnimationFrame(startAutoScroll));
-    }, 1200);
+    }, 1650);
   }
-  startBtn.addEventListener('click', openInvitation);
-  startBtn.addEventListener('keydown', function(e){
-    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){
-      e.preventDefault();
-      openInvitation();
-    }
-  });
   startBtn.addEventListener('click', openInvitation);
   startBtn.addEventListener('keydown', function(e){
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){
@@ -828,22 +888,25 @@ document.addEventListener('DOMContentLoaded', function(){
   // لتفعيلها: ضع رابط_web_app_من_Google_Apps_Script_هنا
   const COMMENTS_API = 'https://script.google.com/macros/s/AKfycbx7sGijtm-Wd-Aa0N2c0GDzVb3L_Rw_9yt3BarR4NtYemdUzRTglNOi3i0MjyhbD82O/exec';
 
-  function timeAgo(ts){
-    const diff = (Date.now() - ts) / 1000;
-    if (diff < 60) return 'الآن';
-    if (diff < 3600){
-      const m = Math.floor(diff / 60);
-      return 'قبل ' + (m === 1 ? 'دقيقة' : m === 2 ? 'دقيقتين' : m <= 10 ? m + ' دقائق' : m + ' دقيقة');
+  const commentDateFormat = new Intl.DateTimeFormat('ar-EG-u-nu-latn', {
+    timeZone:'Asia/Gaza', day:'numeric', month:'long', year:'numeric',
+    hour:'numeric', minute:'2-digit', hour12:true
+  });
+  function setCommentTime(element, value){
+    element.removeAttribute('datetime');
+    element.removeAttribute('title');
+    if (value === null || value === undefined || value === '') {
+      element.textContent = 'تاريخ الإضافة غير متوفر'; return;
     }
-    if (diff < 86400){
-      const h = Math.floor(diff / 3600);
-      return 'قبل ' + (h === 1 ? 'ساعة' : h === 2 ? 'ساعتين' : h <= 10 ? h + ' ساعات' : h + ' ساعة');
+    const numeric = typeof value === 'number' || /^\d+$/.test(String(value));
+    const timestamp = numeric ? Number(value) * (Number(value) < 1e11 ? 1000 : 1) : Date.parse(value);
+    const date = new Date(timestamp);
+    if (!Number.isFinite(date.getTime()) || date.getTime() <= 0) {
+      element.textContent = 'تاريخ الإضافة غير متوفر'; return;
     }
-    if (diff < 604800){
-      const d = Math.floor(diff / 86400);
-      return 'قبل ' + (d === 1 ? 'يوم' : d === 2 ? 'يومين' : d <= 10 ? d + ' أيام' : d + ' يوم');
-    }
-    return new Date(ts).toLocaleDateString('ar-EG-u-nu-latn', {day:'numeric', month:'long'});
+    element.dateTime = date.toISOString();
+    element.textContent = commentDateFormat.format(date) + ' · بتوقيت غزة';
+    element.title = 'تاريخ ووقت إضافة التعليق بتوقيت غزة';
   }
 
   function renderComment(c, pending){
@@ -853,12 +916,13 @@ document.addEventListener('DOMContentLoaded', function(){
     el.innerHTML =
       '<div class="comment-avatar"></div>' +
       '<div class="comment-content">' +
-        '<div class="comment-head"><span class="comment-name"></span><span class="comment-time"></span></div>' +
+        '<div class="comment-head"><span class="comment-name"></span><time class="comment-time"></time></div>' +
         '<p class="comment-text"></p>' +
       '</div>';
     el.querySelector('.comment-avatar').textContent = initial;
     el.querySelector('.comment-name').textContent = c.name || 'زائر';
-    el.querySelector('.comment-time').textContent = pending ? 'جاري الإرسال...' : timeAgo(c.time || Date.now());
+    if (pending) el.querySelector('.comment-time').textContent = 'جاري الإرسال...';
+    else setCommentTime(el.querySelector('.comment-time'), c.time);
     el.querySelector('.comment-text').textContent = c.message || '';
     return el;
   }
@@ -897,8 +961,8 @@ document.addEventListener('DOMContentLoaded', function(){
       await fetch(COMMENTS_API, { method:'POST', mode:'no-cors',
         body: new URLSearchParams({ action:'add', name, message }) });
       temp.classList.remove('comment-pending');
-      temp.querySelector('.comment-time').textContent = timeAgo(Date.now());
-      toast('وصلتنا رسالتك 🤍');
+      toast('تم إرسال الطلب، سيظهر تعليقك بعد تأكيد الحفظ');
+      temp.querySelector('.comment-time').textContent = 'بانتظار تأكيد الحفظ';
     } catch(e){
       temp.remove();
       textIn.value = message;
@@ -911,7 +975,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // قسم قصتنا المنسدل
   const storyToggle = $('story-toggle'), storySection = document.querySelector('.story-section');
-  if (storyToggle && storySection) storyToggle.addEventListener('click', () => storySection.classList.toggle('open'));
+  if (storyToggle && storySection) {
+    const toggleStory = () => storyToggle.setAttribute('aria-expanded', String(storySection.classList.toggle('open')));
+    storyToggle.addEventListener('click', toggleStory);
+    storyToggle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleStory(); } });
+  }
 
   // النقطة الذهبية المتحركة مع التمرير
   const timeline = document.querySelector('.timeline'), trackerDot = $('scroll-tracker');
@@ -937,5 +1005,6 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 </script>
+<script src="invitation.js"></script>
 </body>
 </html>
