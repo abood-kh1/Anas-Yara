@@ -374,9 +374,10 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         <div class="intro-date"><span>الاثنين</span><time datetime="2026-11-02" dir="ltr">02 <i> / </i> 11</time><span>٢٠٢٦</span></div>
       </div>
       <div class="intro-invitation-action">
-        <p class="intro-subtitle">خبّأنا لكم فرحة… افتحوا الدعوة</p>
-        <button class="intro-open-button" id="start-invitation" type="button" aria-label="افتح الدعوة"><span>افتح الحكاية</span><span class="intro-button-arrow" aria-hidden="true">↗</span></button>
-        <small class="intro-note">بكلّ الحب، ندعوكم لتكونوا جزءًا من فرحتنا</small>
+        <button class="intro-open-button" id="start-invitation" type="button" aria-label="افتح الحكاية — فتح الدعوة">
+          <span class="intro-seal" aria-hidden="true">أ &amp; ي</span>
+          <span class="intro-seal-caption">افتح الحكاية</span>
+        </button>
       </div>
     </div>
   </div>
@@ -887,7 +888,8 @@ document.addEventListener('DOMContentLoaded', function(){
       requestAnimationFrame(() => requestAnimationFrame(startAutoScroll));
     }, 1650);
   }
-  startBtn.addEventListener('click', openInvitation);
+  // Any click on the opening cover opens the invitation; the seal remains keyboard accessible.
+  curtain.addEventListener('click', openInvitation);
   startBtn.addEventListener('keydown', function(e){
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){
       e.preventDefault();
