@@ -33,6 +33,15 @@
 .reveal-pending{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}.reveal-pending.is-visible{opacity:1;transform:none}
 .app-container{gap:42px}.card,.welcome-card,.comments-section,.timeline-section,.countdown-section{border-color:#b69a6030;box-shadow:0 14px 36px #654c3910;background-color:#fffdf5b8}
 .section-title{font-family:'Aref Ruqaa',serif;font-size:1.45rem;color:var(--rose)}
+/* Poetry replaces only the welcome paragraph; use the existing paper palette and reveal. */
+.poetic-invitation{font-family:Amiri,serif;direction:rtl;text-align:center;padding:14px 0 8px;margin:0 auto 10px;max-width:100%;font-weight:400;letter-spacing:normal;word-break:normal;overflow-wrap:normal}
+.invitation-verses{font-size:clamp(1.08rem,4.8vw,1.22rem);line-height:2.4;color:var(--rose)}
+.invitation-verses p+p{margin-top:.65em}
+.invitation-verses span{display:block;text-wrap:balance}
+.invitation-verse-divider{margin:14px auto 13px;font-size:.75rem;line-height:2;color:var(--gold);opacity:.7;word-spacing:.45em}
+.invitation-poetic-message{font-size:1rem;line-height:2.35;color:var(--text-main);text-wrap:balance}
+.welcome-card.is-visible .poetic-invitation{animation:paperReveal .85s ease both}
+@media(prefers-reduced-motion:reduce){.welcome-card.is-visible .poetic-invitation{animation:none}}
 .fx-orb{opacity:.2}.sparkle{width:3px;height:3px;animation-duration:5s}.fx-petal{width:9px;height:15px;border-radius:85% 0 85% 15%;background:linear-gradient(135deg,#d5a2ac99,#f2ded499);font-size:0;opacity:.35}
 .cal-day.wedding{animation:dayShine 6s ease-in-out infinite}.cal-day.wedding::before{animation:none;box-shadow:none;border-width:1px}.cal-day.wedding::after{animation:none}.story-overlay-title h2{animation:none}.timeline-item.active .dot{animation:none}.wa-pulse::after{animation:none}
 .moment-img{transition:transform 1.8s ease}.video-placeholder:hover .moment-img{transform:scale(1.045)}.poem-overlay{background:linear-gradient(180deg,#30262a22,#38252dbf)}.poem-overlay p{font-size:1.3rem}
