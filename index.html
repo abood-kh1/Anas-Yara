@@ -824,7 +824,7 @@ document.addEventListener('DOMContentLoaded', function(){
     touchResumeTimer = setTimeout(() => {
       interactionWasScrolling = false;
       if (!document.hidden && !manualScrollPause) startAutoScroll();
-    }, 220);
+    }, 620);
   }
   function onScrollKey(e){ if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(e.key)) { pauseForManualScroll(); resumeAfterManualScroll(); } }
   function onTouchStart(e){
