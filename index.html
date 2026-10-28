@@ -398,23 +398,20 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     </header>
 
     <section class="card welcome-card">
+      <p class="family-celebration"><span aria-hidden="true">✦</span><span>أفراح آل الخزندار والشرفا</span><span aria-hidden="true">✦</span></p>
       <div class="bismillah">بسم الله الرحمن الرحيم</div>
       <div class="ayah-divider" aria-hidden="true"><span>❦</span></div>
       <div class="ayah-hero">
         <p class="ayah-hero-text">
-          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ
         </p>
         <p class="ayah-hero-ref">سورة الروم · الآية ٢١</p>
       </div>
       <div class="poetic-invitation" dir="rtl" lang="ar">
         <div class="invitation-verses">
           <p>
-            <span>تَلَاقَى قَلْبَانِ فَأَزْهَرَتِ الأَمَانِي،</span>
-            <span>وَأَشْرَقَ فِي دَرْبِهِمَا نُورُ السُّرُورِ</span>
-          </p>
-          <p>
-            <span>وَفِي لَيْلَةِ الْحُبِّ تَكْتَمِلُ الْحِكَايَةُ،</span>
-            <span>وَيَزْدَادُ بِحُضُورِكُمْ بَهَاءُ الزُّهُورِ</span>
+            <span>تَلَاقَى قَلْبَانِ فَأَزْهَرَتِ الأَمَانِي، وَأَشْرَقَ فِي دَرْبِهِمَا نُورُ السُّرُورِ</span>
+            <span>وَفِي لَيْلَةِ الْحُبِّ تَكْتَمِلُ الْحِكَايَةُ، وَيَزْدَادُ بِحُضُورِكُمْ بَهَاءُ الزُّهُورِ</span>
           </p>
         </div>
         <div class="invitation-verse-divider" aria-hidden="true">✦ ❀ ✦</div>
@@ -654,7 +651,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <audio id="bg-music" loop preload="none">
+  <audio id="bg-music" loop preload="auto">
     <source src="music/music.mp3" type="audio/mpeg">
   </audio>
 </div>
@@ -813,6 +810,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const curtain = $('curtain-container'), startBtn = $('start-invitation');
   document.body.style.overflow = 'hidden';
   let autoScrollAnimation, lastScrollTime = 0, scrollPosition = 0, scrolling = false;
+  let touchResumeTimer, interactionWasScrolling = false, manualScrollPause = false;
   const scrollButton = $('toggle-autoscroll');
   function updateScrollButton(){
     scrollButton.setAttribute('aria-pressed', String(scrolling));
@@ -834,26 +832,65 @@ document.addEventListener('DOMContentLoaded', function(){
   function stopScroll(){
     scrolling = false;
     if (autoScrollAnimation) cancelAnimationFrame(autoScrollAnimation);
-    window.removeEventListener('wheel', stopScroll);
-    window.removeEventListener('keydown', onScrollKey);
     updateScrollButton();
   }
-  function onScrollKey(e){ if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End','Tab',' '].includes(e.key)) stopScroll(); }
+  function pauseForManualScroll(){
+    interactionWasScrolling = scrolling;
+    if (touchResumeTimer) clearTimeout(touchResumeTimer);
+    touchResumeTimer = null;
+    if (scrolling) stopScroll();
+  }
+  function resumeAfterManualScroll(){
+    if (!interactionWasScrolling || manualScrollPause) return;
+    if (touchResumeTimer) clearTimeout(touchResumeTimer);
+    touchResumeTimer = setTimeout(() => {
+      interactionWasScrolling = false;
+      if (!document.hidden && !manualScrollPause) startAutoScroll();
+    }, 1200);
+  }
+  function onScrollKey(e){ if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(e.key)) { pauseForManualScroll(); resumeAfterManualScroll(); } }
+  function onTouchStart(e){
+    if (e.target.closest('#toggle-autoscroll')) return;
+    pauseForManualScroll();
+  }
+  function onWheel(){ pauseForManualScroll(); resumeAfterManualScroll(); }
   function startAutoScroll(){
-    if (scrolling) return;
+    if (scrolling || manualScrollPause) return;
     scrolling = true; lastScrollTime = 0; scrollPosition = window.scrollY;
-    window.addEventListener('wheel', stopScroll, {passive:true});
+    window.addEventListener('wheel', onWheel, {passive:true});
+    window.addEventListener('touchstart', onTouchStart, {passive:true});
+    window.addEventListener('touchend', resumeAfterManualScroll, {passive:true});
+    window.addEventListener('touchcancel', resumeAfterManualScroll, {passive:true});
     window.addEventListener('keydown', onScrollKey);
     updateScrollButton();
     autoScrollAnimation = requestAnimationFrame(scrollStep);
   }
-  scrollButton.addEventListener('click', () => scrolling ? stopScroll() : startAutoScroll());
+  scrollButton.addEventListener('click', () => {
+    if (scrolling || interactionWasScrolling) {
+      manualScrollPause = true;
+      interactionWasScrolling = false;
+      if (touchResumeTimer) clearTimeout(touchResumeTimer);
+      stopScroll();
+    } else {
+      manualScrollPause = false;
+      startAutoScroll();
+    }
+  });
   document.addEventListener('visibilitychange', () => { if (document.hidden) stopScroll(); });
   updateScrollButton();
   let invitationOpening = false;
+  function primeInvitationMusic(event){
+    if (!curtain.contains(event.target)) return;
+    const music = $('bg-music');
+    if (music && music.paused) music.play().catch(() => {});
+    document.removeEventListener('pointerdown', primeInvitationMusic, true);
+  }
+  // Mobile browsers allow audio most reliably when playback begins on the first tap.
+  document.addEventListener('pointerdown', primeInvitationMusic, true);
   function openInvitation(){
     if (invitationOpening) return;
     invitationOpening = true;
+    document.removeEventListener('pointerdown', primeInvitationMusic, true);
     curtain.classList.add('curtain-opened');
     // تشغيل الموسيقى تلقائياً عند الدخول (بدون زر إيقاف)
     // عند حجب التشغيل التلقائي في بعض المتصفحات، تبدأ الموسيقى مع أول تفاعل
