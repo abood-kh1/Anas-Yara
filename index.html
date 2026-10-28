@@ -371,7 +371,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         </div>
         <span class="intro-glint intro-glint-one" aria-hidden="true">✦</span>
         <span class="intro-glint intro-glint-two" aria-hidden="true">✧</span>
-        <div class="intro-date"><span>الاثنين</span><time datetime="2026-11-02" dir="ltr">02 <i> / </i> 11</time><span>٢٠٢٦</span></div>
+        <div class="intro-date"><span>الاثنين</span><time datetime="2026-11-02" dir="ltr">02 <i> / </i> 11</time><span dir="ltr">2026</span></div>
       </div>
       <div class="intro-invitation-action">
         <button class="intro-open-button" id="start-invitation" type="button" aria-label="افتح الحكاية — فتح الدعوة">
@@ -429,7 +429,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         </div>
         <p class="hosts-sub">لمشاركتهم فرحة حفل زفاف أنس ويارا، في أمسية مميزة تجمع الأهل والأحبة</p>
       </div>
-      <p class="welcome-names">أنس &amp; يارا</p>
+      <p class="welcome-names" aria-label="أنس ويارا"><span>أنس</span><span class="welcome-name-join" aria-hidden="true">و</span><span>يارا</span></p>
     </section>
 
     <section class="location-section">
@@ -494,6 +494,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
             <div class="time">PM 4:00<small>بتوقيت غزة</small></div>
           </div>
         </div>
+      </div>
+      <div class="event-schedule" aria-labelledby="event-schedule-title">
+        <h3 id="event-schedule-title">بداية الحفل</h3>
+        <time datetime="2026-11-02T16:00:00+02:00"><span class="event-schedule-date">الاثنين · 2 نوفمبر 2026</span><span class="event-schedule-time">الرابعة عصرًا</span></time>
+        <p>بتوقيت غزة</p>
       </div>
       <button class="save-date-btn" id="save-date-btn"><span>احفظ الموعد</span><span>📅</span></button>
     </section>
@@ -560,19 +565,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
           <button class="comment-btn" type="submit" id="comment-send"><i class="ph ph-paper-plane-tilt"></i><span>إرسال</span></button>
         </div>
       </form>
-    </section>
-
-    <section class="timeline-section">
-      <h3 class="section-title">برنامج المناسبة</h3>
-      <div class="timeline">
-        <div class="scroll-tracker-dot" id="scroll-tracker"></div>
-        <div class="timeline-item active">
-          <div class="dot"></div>
-          <div class="content"><span class="event-name">بداية الحفل</span>
-            <div class="time-container"><span class="event-time">الرابعة عصرًا</span><span class="event-time">الاثنين 2/11/2026</span></div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="story-section">
@@ -831,6 +823,8 @@ document.addEventListener('DOMContentLoaded', function(){
   function scrollStep(time){
     if (!scrolling) return;
     if (!lastScrollTime) lastScrollTime = time;
+    // Continue from the visitor's position after a touch swipe or in-page navigation.
+    if (Math.abs(window.scrollY - scrollPosition) > 3) scrollPosition = window.scrollY;
     scrollPosition += Math.min(time - lastScrollTime, 50) * .045;
     lastScrollTime = time;
     window.scrollTo(0, scrollPosition);
@@ -841,19 +835,14 @@ document.addEventListener('DOMContentLoaded', function(){
     scrolling = false;
     if (autoScrollAnimation) cancelAnimationFrame(autoScrollAnimation);
     window.removeEventListener('wheel', stopScroll);
-    window.removeEventListener('touchstart', onScrollInteraction);
-    window.removeEventListener('pointerdown', onScrollInteraction);
     window.removeEventListener('keydown', onScrollKey);
     updateScrollButton();
   }
-  function onScrollInteraction(e){ if (!scrollButton.contains(e.target)) stopScroll(); }
   function onScrollKey(e){ if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End','Tab',' '].includes(e.key)) stopScroll(); }
   function startAutoScroll(){
     if (scrolling) return;
     scrolling = true; lastScrollTime = 0; scrollPosition = window.scrollY;
     window.addEventListener('wheel', stopScroll, {passive:true});
-    window.addEventListener('touchstart', onScrollInteraction, {passive:true});
-    window.addEventListener('pointerdown', onScrollInteraction, {passive:true});
     window.addEventListener('keydown', onScrollKey);
     updateScrollButton();
     autoScrollAnimation = requestAnimationFrame(scrollStep);
@@ -994,28 +983,6 @@ document.addEventListener('DOMContentLoaded', function(){
     storyToggle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleStory(); } });
   }
 
-  // النقطة الذهبية المتحركة مع التمرير
-  const timeline = document.querySelector('.timeline'), trackerDot = $('scroll-tracker');
-  const items = document.querySelectorAll('.timeline-item');
-  if (timeline && trackerDot && items.length) {
-    trackerDot.style.display = 'block';
-    window.addEventListener('scroll', function(){
-      const viewportMiddle = window.innerHeight / 2;
-      let closest = null, minDist = Infinity;
-      items.forEach(item => {
-        const r = item.getBoundingClientRect();
-        const c = r.top + r.height / 2;
-        const d = Math.abs(viewportMiddle - c);
-        if (d < minDist) { minDist = d; closest = item; }
-      });
-      if (closest) {
-        const dot = closest.querySelector('.dot');
-        trackerDot.style.top = (closest.offsetTop + dot.offsetTop) + 'px';
-        items.forEach(i => i.classList.remove('active'));
-        closest.classList.add('active');
-      }
-    }, {passive:true});
-  }
 });
 </script>
 <script src="invitation.js"></script>

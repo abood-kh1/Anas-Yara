@@ -33,6 +33,16 @@
 .reveal-pending{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}.reveal-pending.is-visible{opacity:1;transform:none}
 .app-container{gap:42px}.card,.welcome-card,.comments-section,.timeline-section,.countdown-section{border-color:#b69a6030;box-shadow:0 14px 36px #654c3910;background-color:#fffdf5b8}
 .section-title{font-family:'Aref Ruqaa',serif;font-size:1.45rem;color:var(--rose)}
+.hosts-title,.host-role{color:#796c60}
+.welcome-names{position:relative;display:flex;align-items:baseline;justify-content:center;gap:16px;margin:25px auto 0;padding:19px 0 6px;font-family:'Aref Ruqaa',Amiri,serif;font-size:clamp(2.6rem,11vw,3.3rem);font-weight:400;line-height:1.8;color:var(--rose)}
+.welcome-names::before{content:"";position:absolute;top:0;left:50%;width:65px;height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.welcome-name-join{font-family:Amiri,serif;font-size:.55em;color:var(--gold)}
+.event-schedule{width:100%;max-width:340px;margin:0 0 19px;padding:22px 18px 19px;text-align:center;border:1px solid #b69a6040;border-radius:22px;background:#fffaf2c9;box-shadow:0 7px 24px #654c3908}
+.event-schedule h3{font-family:Tajawal,sans-serif;font-size:.78rem;font-weight:500;color:#796c60;margin-bottom:12px}
+.event-schedule time{display:flex;flex-direction:column;gap:4px}
+.event-schedule-date{font-size:.95rem;line-height:1.9;color:var(--text-main)}
+.event-schedule-time{font-family:Amiri,serif;font-size:2.15rem;line-height:1.7;color:var(--rose)}
+.event-schedule p{font-size:.72rem;line-height:1.8;color:#796c60;margin-top:4px}
 /* Poetry replaces only the welcome paragraph; use the existing paper palette and reveal. */
 .poetic-invitation{font-family:Amiri,serif;direction:rtl;text-align:center;padding:14px 0 8px;margin:0 auto 10px;max-width:100%;font-weight:400;letter-spacing:normal;word-break:normal;overflow-wrap:normal}
 .invitation-verses{font-size:clamp(1.08rem,4.8vw,1.22rem);line-height:2.4;color:var(--rose)}
@@ -108,3 +118,6 @@
 @keyframes gift-ring{0%,45%{transform:scale(.95);opacity:0}55%{opacity:.65}90%,100%{transform:scale(1.4);opacity:0}}
 @media(max-width:360px){.hero{min-height:590px}.hero-names{font-size:3rem}.hero-subtitle{font-size:.65rem}.botanical{width:75px}.poem-overlay{padding:18px}.poem-overlay p{font-size:1.15rem}}
 @media(prefers-reduced-motion:reduce){.reveal-pending{opacity:1;transform:none}.curtain-overlay,.entry-button-wrapper,.envelope-letter{transition:none}.invitation-ready .hero-names,.invitation-ready .hero-date{animation:none}.fx-layer{display:none}}
+
+/* Keep secondary information legible on the ivory cards. */
+.calendar-kicker,.calendar-dedication,.calendar-head .year,.calendar-foot .time small,.countdown-kicker,.location-address{color:#796c60}
