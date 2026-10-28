@@ -55,7 +55,7 @@
 .welcome-card.is-visible .poetic-invitation{animation:paperReveal .85s ease both}
 @media(prefers-reduced-motion:reduce){.welcome-card.is-visible .poetic-invitation{animation:none}}
 .fx-orb{opacity:.2}.sparkle{width:3px;height:3px;animation-duration:5s}.fx-petal{width:9px;height:15px;border-radius:85% 0 85% 15%;background:linear-gradient(135deg,#d5a2ac99,#f2ded499);font-size:0;opacity:.35}
-.cal-day.wedding{animation:dayShine 6s ease-in-out infinite}.cal-day.wedding::before{animation:none;box-shadow:none;border-width:1px}.cal-day.wedding::after{animation:none}.story-overlay-title h2{animation:none}.timeline-item.active .dot{animation:none}.wa-pulse::after{animation:none}
+.cal-day.wedding{animation:dayShine 6s ease-in-out infinite}.cal-day.wedding::before{animation:none;box-shadow:none;border-width:1px}.cal-day.wedding::after{animation:none}.timeline-item.active .dot{animation:none}.wa-pulse::after{animation:none}
 .moment-img{transition:transform 1.8s ease}.video-placeholder:hover .moment-img{transform:scale(1.045)}.poem-overlay{background:linear-gradient(180deg,#30262a22,#38252dbf)}.poem-overlay p{font-size:1.3rem}
 .wa-card{background:linear-gradient(140deg,#1faa54,#128c4a);border:1px solid #ffffff4d;color:#fff;box-shadow:0 12px 30px #128c4a33;padding:24px 20px}.wa-label{font-size:.9rem}.wa-btn{background:#fff;color:#128c4a;box-shadow:0 6px 18px #075c2f26;font-size:.9rem;padding:12px 23px}.wa-btn:hover{box-shadow:0 10px 24px #075c2f38}.wa-btn i{color:#159447}
 .utility-controls{position:fixed;top:max(14px,env(safe-area-inset-top));left:14px;z-index:1100;display:flex;gap:7px;opacity:0;visibility:hidden;transition:opacity .4s}.invitation-ready .utility-controls{opacity:1;visibility:visible}
@@ -123,3 +123,56 @@
 
 /* Keep secondary information legible on the ivory cards. */
 .calendar-kicker,.calendar-dedication,.calendar-head .year,.calendar-foot .time small,.countdown-kicker,.location-address{color:#796c60}
+
+/* Light spacing and reading hierarchy for the invitation's content order. */
+.app-container{gap:32px;padding-bottom:calc(150px + env(safe-area-inset-bottom))}
+.hero-date{max-width:30ch;margin:22px auto 0;font-size:1.04rem;line-height:1.9;color:#75665c}
+.welcome-card{margin:0}
+.invitation-card{padding-top:25px}
+.invitation-card .family-celebration{margin-bottom:9px}
+.invitation-card .family-celebration{color:#744052;font-size:1.32rem;font-weight:600}
+.location-section{gap:0;padding-inline:8px;scroll-margin-bottom:110px}
+.location-section>.section-title{margin-bottom:14px}
+.event-schedule{margin-bottom:13px;padding:18px 16px 15px}
+.event-schedule h4{margin-bottom:8px;font-family:Tajawal,sans-serif;font-size:.9rem;font-weight:500;color:#66594e}
+.event-schedule-date{font-size:1rem;color:#51483f}
+.event-schedule p{font-size:.82rem;color:#66594e}
+.location-name{margin:0 0 2px;font-size:1.2rem;color:#51483f}
+.location-address{margin:0 0 16px;font-size:1rem;line-height:1.85;color:#62574d}
+.event-action-buttons{display:flex;justify-content:center;gap:10px;width:100%;max-width:340px;margin:0 auto 18px}
+.event-location-btn,.event-action-buttons .save-date-btn{display:flex;flex:1;justify-content:center;align-items:center;gap:8px;min-height:46px;padding:9px 12px;border:1px solid #b69a6055;border-radius:24px;background:#fffaf0;color:#6d5945;font:500 .94rem 'Tajawal',sans-serif;cursor:pointer;transition:background-color .2s,border-color .2s,transform .2s}
+.event-location-btn:hover,.event-action-buttons .save-date-btn:hover{background:#fffdf8;border-color:var(--gold);transform:translateY(-1px)}
+.event-action-buttons .save-date-btn{margin:0;box-shadow:none}
+.location-section .calendar-card{margin-top:0;margin-bottom:15px}
+.location-section .calendar-foot{display:none}
+.location-section .details-section{padding:0;margin:0;width:100%;max-width:340px}
+.location-section .detail-item{padding:12px 15px;border-color:#b69a6030;background:#fffdf5a8;box-shadow:none}
+.location-section .detail-item .text{font-size:.94rem;color:#5f554b}
+.countdown-section{margin:0}
+.moments-section,.congratulations-section,.comments-section,.closing-message,.footer{scroll-margin-bottom:110px}
+.moments-section .section-title{margin-bottom:13px}
+.video-placeholder{margin-bottom:0}
+.congratulations-section{width:100%;text-align:center}
+.congratulations-section .cong-title{font-size:1.08rem;color:#625348;margin-bottom:10px}
+.congratulations-section .congratulations{margin-top:0}
+.congratulations-section .comments-list{margin-top:0}
+.comments-section{padding:27px 18px}
+.comments-sub{font-size:.92rem;line-height:1.8;color:#71655a;margin:0 0 16px}
+.comment-name,.comment-text{color:#51483f}
+.closing-message{padding:4px 8px;font-size:1.12rem;line-height:2.05;color:#51483f}
+.closing-message .highlight{margin-top:8px;color:var(--rose)}
+.footer{padding-top:23px}
+.footer .credit{font-size:11px;color:#9a8e81;margin-top:11px}
+.footer .credit strong{color:#786b60}
+@media(max-width:600px){
+  .app-container{gap:27px;padding:28px 16px calc(160px + env(safe-area-inset-bottom))}
+  .hero-date{max-width:26ch;margin-top:17px;font-size:1rem}
+  .event-action-buttons{gap:8px;margin-bottom:15px}
+  .event-location-btn,.event-action-buttons .save-date-btn{min-height:46px;padding:8px 7px;font-size:.88rem}
+  .event-schedule{padding:16px 13px 14px}
+  .location-name{font-size:1.12rem}
+  .location-address{font-size:.96rem;margin-bottom:13px}
+  .location-section .calendar-card{margin-bottom:13px}
+  .location-section .details-section{padding:0}
+  .comments-section{padding:23px 15px}
+}

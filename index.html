@@ -289,22 +289,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .message-bubble{background:var(--card-bg);padding:18px;border-radius:20px;color:var(--text-dark);margin-top:15px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
 
 /* ===== قصتنا ===== */
-.story-section{width:100%;background:rgba(255,255,255,.05);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:25px;overflow:hidden;
-  box-shadow:0 15px 35px rgba(116,81,123,.08);border:1px solid rgba(255,255,255,.15);transition:all .5s cubic-bezier(.4,0,.2,1)}
-.story-header{cursor:pointer;position:relative;width:100%;height:340px;overflow:hidden}
-.story-image-container{position:relative;width:100%;height:100%}
-.story-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.65) contrast(1.1);transition:transform .8s cubic-bezier(.2,0,.2,1)}
-.story-header:hover .story-photo{transform:scale(1.08)}
-.story-overlay-title{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fcfaf6;gap:15px;background:linear-gradient(to bottom,transparent,rgba(116,81,123,.45))}
-.story-overlay-title h2{font-family:'Aref Ruqaa',serif;font-size:2.6rem;font-weight:500;margin:0;animation:story-glow-pulse 2.5s infinite ease-in-out;text-shadow:0 0 15px rgba(255,255,255,.3)}
-@keyframes story-glow-pulse{0%{text-shadow:0 0 10px rgba(255,255,255,.4),0 0 20px rgba(212,175,55,.2);transform:scale(1)}
-50%{text-shadow:0 0 25px rgba(255,255,255,.8),0 0 40px rgba(212,175,55,.5);transform:scale(1.03)}
-100%{text-shadow:0 0 10px rgba(255,255,255,.4),0 0 20px rgba(212,175,55,.2);transform:scale(1)}}
-#story-arrow{font-size:1.8rem;color:var(--gold-color,#D4AF37);transition:all .5s cubic-bezier(.68,-.55,.265,1.55);filter:drop-shadow(0 0 5px rgba(212,175,55,.5))}
-.story-content{max-height:0;overflow:hidden;transition:all .8s cubic-bezier(.4,0,.2,1);background:rgba(255,255,255,.03)}
-.story-section.open .story-content{max-height:1200px;padding:35px 25px}
-.story-section.open #story-arrow{transform:rotate(180deg) translateY(5px);color:#fff}
-.story-content p{line-height:2.1;font-family:'Amiri',serif;font-size:1.15rem;color:#555}
 
 /* ===== الفوتر ===== */
 .footer{text-align:center;font-size:.9rem;border-top:1px solid var(--border-color);padding-top:30px;width:100%}
@@ -392,13 +376,12 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         <span class="ampersand-wrapper"><span class="ampersand">&amp;</span></span>
         <span class="name-wrapper"><span class="title-prefix">Eng.</span><span class="name-text">Yara</span></span>
       </h1>
-      <p class="hero-date">الاثنيــن، <b>2 نوفمبر 2026</b> في <b>4:00 مساءً</b></p>
+      <p class="hero-date">بكل الحب، ننتظركم لتشاركونا فرحتنا</p>
       <p id="guest-greeting" class="guest-greeting" hidden></p>
       <div class="scroll-indicator"><i class="ph ph-caret-double-down icon"></i></div>
     </header>
 
     <section class="card welcome-card">
-      <p class="family-celebration"><span aria-hidden="true">✦</span><span>أفراح آل الخزندار والشرفا</span><span aria-hidden="true">✦</span></p>
       <div class="bismillah">بسم الله الرحمن الرحيم</div>
       <div class="ayah-divider" aria-hidden="true"><span>❦</span></div>
       <div class="ayah-hero">
@@ -407,6 +390,10 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         </p>
         <p class="ayah-hero-ref">سورة الروم · الآية ٢١</p>
       </div>
+    </section>
+
+    <section class="card welcome-card invitation-card">
+      <p class="family-celebration"><span aria-hidden="true">✦</span><span>أفراح آل الخزندار والشرفا</span><span aria-hidden="true">✦</span></p>
       <div class="poetic-invitation" dir="rtl" lang="ar">
         <div class="invitation-verses">
           <p>
@@ -430,9 +417,18 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
     </section>
 
     <section class="location-section">
-      <h3 class="section-title">الموقع</h3>
+      <h3 class="section-title">تفاصيل الحفل</h3>
+      <div class="event-schedule" aria-labelledby="event-schedule-title">
+        <h4 id="event-schedule-title">موعدنا</h4>
+        <time datetime="2026-11-02T16:00:00+02:00"><span class="event-schedule-date">الاثنين · 2 نوفمبر 2026</span><span class="event-schedule-time">الرابعة عصرًا</span></time>
+        <p>بتوقيت غزة</p>
+      </div>
       <p class="location-name">صالة وقاعة White Rose</p>
       <p class="location-address">غزة · تل الهوا<br>بالقرب من دوار أبو مازن</p>
+      <div class="event-action-buttons">
+        <button class="event-location-btn" id="event-location-button" type="button"><i class="ph ph-map-pin" aria-hidden="true"></i> الموقع</button>
+        <button class="save-date-btn" id="save-date-btn" type="button"><span>احفظ الموعد</span><span aria-hidden="true">📅</span></button>
+      </div>
       <div class="calendar-card">
         <div class="calendar-sparkles" aria-hidden="true"><span>✦</span><span>♡</span><span>✧</span><span>✦</span></div>
         <p class="calendar-kicker">في هذا اليوم… تبدأ حكايتنا</p>
@@ -492,12 +488,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
           </div>
         </div>
       </div>
-      <div class="event-schedule" aria-labelledby="event-schedule-title">
-        <h3 id="event-schedule-title">بداية الحفل</h3>
-        <time datetime="2026-11-02T16:00:00+02:00"><span class="event-schedule-date">الاثنين · 2 نوفمبر 2026</span><span class="event-schedule-time">الرابعة عصرًا</span></time>
-        <p>بتوقيت غزة</p>
+      <div class="details-section">
+        <div class="details-list">
+          <div class="detail-item"><span class="bullet"></span><span class="text">يرجى الحضور في الوقت المحدد</span><span class="info-icon">ⓘ</span></div>
+        </div>
       </div>
-      <button class="save-date-btn" id="save-date-btn"><span>احفظ الموعد</span><span>📅</span></button>
     </section>
 
     <section class="countdown-section">
@@ -523,18 +518,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
       <button class="celebrate-button" id="celebrate-countdown" type="button"><span aria-hidden="true">♡</span> انثروا لنا الفرح <span aria-hidden="true">✦</span></button>
     </section>
 
-    <section class="details-section">
-      <h3 class="section-title">تفاصيل الحفل</h3>
-      <div class="details-list">
-        <div class="detail-item"><span class="bullet"></span><span class="text">يرجى الحضور في الوقت المحدد</span><span class="info-icon">ⓘ</span></div>
-      </div>
-    </section>
-
-    <section class="closing-message">
-      <p>وجودكم بيننا هو أجمل هدية،<br>وحضوركم يزيد فرحتنا نورًا وسعادة 💫</p>
-      <p class="highlight">ننتظركم بكل حب لنصنع معًا ذكرى لا تُنسى 🤍</p>
-    </section>
-
     <section class="moments-section">
       <h3 class="section-title">بداية حكايتنا</h3>
       <div class="video-placeholder">
@@ -543,8 +526,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
           <p>في دروبِ الفرحِ وُلدَتْ حكايتُنا<br>وكبِرَتْ معَنا حتى أزهرتْ أمانينا<br>ما كانَ حبًّا يُروى ثمَّ يُنسى<br>بل كانَ فصلًا خالدًا… كتبَهُ القدرُ لنا</p>
         </div>
       </div>
-<div class="congratulations">
-        <p class="cong-title">رسالة الأصدقاء 💬</p>
+    </section>
+
+    <section class="congratulations-section">
+      <p class="cong-title">رسالة الأصدقاء 💬</p>
+      <div class="congratulations">
         <div class="comments-list" id="comments-list">
           <p class="comments-empty" id="comments-empty">كن أول من يكتب رسالة 🤍</p>
         </div>
@@ -564,25 +550,16 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
       </form>
     </section>
 
-    <section class="story-section">
-      <div class="story-header" id="story-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="story-content">
-        <div class="story-image-container">
-          <img class="story-photo" loading="lazy" src="photo/bg.jfif" alt="أنس ويارا">
-          <div class="story-overlay-title">
-            <h2>أنس ويارا</h2>
-            <i class="ph ph-caret-down" id="story-arrow"></i>
-          </div>
-        </div>
-      </div>
-      <div class="story-content" id="story-content">
-        <p>بكل الحب والفرح ندعوكم لمشاركتنا أجمل لحظاتنا يوم الاثنين 2 نوفمبر 2026 في قاعة White Rose بغزة. وجودكم يزيد فرحتنا نورًا وسعادة، وننتظركم بكل حب لنصنع معًا ذكرى لا تُنسى 🤍</p>
-      </div>
+    <section class="closing-message">
+      <p>وجودكم بيننا هو أجمل هدية،<br>وحضوركم يزيد فرحتنا نورًا وسعادة 💫</p>
+      <p class="highlight">ننتظركم بكل حب لنصنع معًا ذكرى لا تُنسى 🤍</p>
     </section>
 
     <footer class="footer">
       <p class="footer-names">أنس &amp; يارا</p>
       <p class="footer-date">02/11/2026</p>
       <p class="footer-heart">🤍</p>
+      <p style="margin-top:8px;color:#a3978a;font-size:12px">نتشرف بوجودكم ومشاركتكم فرحتنا 🤍</p>
       <div class="wa-card">
         <p class="wa-label">لطلب نسخة دعوة لمناسبتك<br>تواصل معنا عبر الواتساب</p>
         <a class="wa-btn" href="https://wa.me/970567581412?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AF%D8%B9%D9%88%D8%A9%20%D9%84%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%AA%D9%8A" target="_blank" rel="noopener">
@@ -591,7 +568,6 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
         </a>
       </div>
       <p class="credit">Designed with love by <strong>ENG: Abdulaziz Alkhazendar</strong></p>
-      <p style="margin-top:8px;color:#a3978a;font-size:12px">نتشرف بوجودكم ومشاركتكم فرحتنا 🤍</p>
     </footer>
 
   </div>
@@ -706,7 +682,9 @@ document.addEventListener('DOMContentLoaded', function(){
   [locationModal, giftModal, qrModal].forEach(m => m.addEventListener('click', e => { if (e.target === m) closeModal(m); }));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') [locationModal, giftModal, qrModal].forEach(closeModal); });
 
-  $('btn-location').addEventListener('click', () => openModal(locationModal));
+  document.querySelectorAll('#btn-location, #event-location-button').forEach(button => {
+    button.addEventListener('click', () => openModal(locationModal));
+  });
   $('close-modal').addEventListener('click', () => closeModal(locationModal));
   $('btn-gift').addEventListener('click', () => openModal(giftModal));
   $('btn-comments').addEventListener('click', () => {
@@ -835,7 +813,7 @@ document.addEventListener('DOMContentLoaded', function(){
     updateScrollButton();
   }
   function pauseForManualScroll(){
-    interactionWasScrolling = scrolling;
+    if (scrolling) interactionWasScrolling = true;
     if (touchResumeTimer) clearTimeout(touchResumeTimer);
     touchResumeTimer = null;
     if (scrolling) stopScroll();
@@ -846,7 +824,7 @@ document.addEventListener('DOMContentLoaded', function(){
     touchResumeTimer = setTimeout(() => {
       interactionWasScrolling = false;
       if (!document.hidden && !manualScrollPause) startAutoScroll();
-    }, 1200);
+    }, 500);
   }
   function onScrollKey(e){ if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End'].includes(e.key)) { pauseForManualScroll(); resumeAfterManualScroll(); } }
   function onTouchStart(e){
@@ -1011,14 +989,6 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   if (COMMENTS_API) loadComments(); else if (empty) empty.textContent = 'التعليقات تُفعَّل قريبًا — تابعونا 💌';
-
-  // قسم قصتنا المنسدل
-  const storyToggle = $('story-toggle'), storySection = document.querySelector('.story-section');
-  if (storyToggle && storySection) {
-    const toggleStory = () => storyToggle.setAttribute('aria-expanded', String(storySection.classList.toggle('open')));
-    storyToggle.addEventListener('click', toggleStory);
-    storyToggle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleStory(); } });
-  }
 
 });
 </script>
